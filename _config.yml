@@ -8,7 +8,8 @@
 # Site settings
 title: ODCA Audit
 description: > # this means to ignore newlines until "baseurl:"
-  Welcome to Jekyll prototype, a simple toolkit for prototyping simple websites.
+  Welcome to the ODCA Audit. This reads ballot information from
+  Google sheets for the City of Oakland.
 baseurl: "/odca-audit" # the subpath of your site, e.g. /blog
 url: "https://adborden.github.io" # the base hostname & protocol for your site
 source_url: "https://github.com/adborden/odca-audit" # Where you can find the source to this prototype
