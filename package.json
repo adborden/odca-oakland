@@ -9,7 +9,7 @@
     "build-thirdparty": "mkdir -p _site/assets && cp -R node_modules/bootstrap-sass/assets/{fonts,images,javascripts} _site/assets/ && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/ && jekyll build",
     "less2sass": "less2sass",
     "serve": "npm run build && jekyll serve",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo No test specified, moving on."
   },
   "repository": {
     "type": "git",
