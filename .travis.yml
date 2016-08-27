@@ -6,8 +6,7 @@ env:
   global:
   - secure: "C8yRHM9vt55v3oXrGeRH4eQ2uGafvLeDn/iku83bQ6gGpgTlh3QDpw8BbcGj+6vG+K0zcpcOcBf+barn6n+nA4d6uP6T36QtwLpLFMB2WwqoXJPRqDB+hV8AnBiIxYBwXsQS/Gwt+Xur3qQXns5Xqa1mm6P1W1eiMHDGNqo8S5tQYbDy2sp2QzqS0AXaLhoHV0/NsWJFUToxaNfQ77DgtdjPO4yXx9U7lPzssHToHLJXVpkhUfxo40PEMdF4TGccTqz7FB3CPNBfwtoDHu6vRhDq1IU1xIwuw4IORBEsqMFicEuaOwYhl6osrVwaSrx3+jjtTHEqXryoiajnQp2lVo3Dl8aUdwO2fdZ/7qWfz//XXU/51mZez/Z1zOw56tdm0voKpYEeSFiGm/xXYOcE7HmbORgqVWjCywNecMA+Bo06y0ZZ7dhqS9zVCgVTKWY3G5xkw6Z/JE5krh7Wefz7Zxljsz0CGWP+u0vB+v0NVpTbTZrI5CW43JF+CqM2WBgQDq0O0u0MyAWLLkazSNl7krXzgNA7V435Cuos9iHH5dk4ZqnDU3Rh7eITCbLb9sbeUv5N+MZsFkltT3uckjH+GwNnDbh9ICkDFcESxgRaFFqa3cRwbRBkAvtUGWMwPGkC7OrOqHotYBar7QRD8xBEbxdCp/umx+yYRHmAKuV/vbE=" # GITHUB_TOKEN
 
-before_deploy:
- - npm install
+before_deploy: npm install
 
 deploy:
   provider: script
