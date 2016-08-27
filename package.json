@@ -7,6 +7,7 @@
     "build": "npm run build-js && npm run build-thirdparty",
     "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify $entrypoint -o _site/assets/js/${bundle_name}.bundle.js; done",
     "build-thirdparty": "mkdir -p _site/assets && cp -R node_modules/bootstrap-sass/assets/{fonts,images,javascripts} _site/assets/ && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/ && jekyll build",
+    "less2sass": "less2sass",
     "serve": "npm run build && jekyll serve",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -31,5 +32,8 @@
     "bootstrap-sass": "^3.3.6",
     "browserify": "^13.0.1",
     "jquery": "^2.2.3"
+  },
+  "devDependencies": {
+    "less2sass": "^1.0.2"
   }
 }
