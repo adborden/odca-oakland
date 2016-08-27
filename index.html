@@ -3,12 +3,19 @@ layout: default
 javascript: index
 ---
 
-<main ng-app="odca" class="container"><h1>hello world</h1>
-{% raw %}
-<div ng-controller="home">
-  <ul ng-repeat="candidate in candidates">
-    <li>{{ candidate.Candidate }}</li>
-  </ul>
-</div>
-{% endraw %}
+<main class="container">
+  <h1>Prototype</h1>
+  <div ng-controller="home">
+
+    <p>
+      Hello, welcome to the ODCA prototype. This reads ballot information from
+      Google sheets for the City of Oakland.
+    </p>
+
+    <p>
+      The purpose of this prototype is to help reconcile the ballot data with
+      the finanace data.
+    </p>
+
+  </div>
 </main>
