@@ -8,7 +8,7 @@ build_dir=$2
 
 
 bin_dir=$(dirname $0)
-project_dir=$(realpath ${bin_dir}/..)
+project_dir=$(dirname ${bin_dir})
 
 if [ -z "$GITHUB_TOKEN" ]; then
     echo "GITHUB_TOKEN is required." >&2
