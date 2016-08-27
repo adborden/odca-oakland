@@ -1,0 +1,32 @@
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: A Jekyll prototype
+description: > # this means to ignore newlines until "baseurl:"
+  Welcome to Jekyll prototype, a simple toolkit for prototyping simple websites.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://yourdomain.com" # the base hostname & protocol for your site
+source_url: "https://github.com/adborden/jekyll-prototype" # Where you can find the source to this prototype
+
+# Build settings
+#
+# You probably don't change these unless you know what you're doing :)
+jekyll_prototype_url: "https://github.com/adborden/jekyll-prototype"
+markdown: kramdown
+keep_files:
+  - assets/fonts
+  - assets/images
+  - assets/javascripts
+  - assets/js
+exclude:
+  - LICENSE
+  - node_modules
+  - npm-debug.log
+  - package.json
+  - README.md
+  - src/
