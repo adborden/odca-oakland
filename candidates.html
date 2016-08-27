@@ -1,0 +1,23 @@
+---
+layout: page
+title: Candidates
+permalink: /candidates/
+javascript: index
+---
+
+{% raw %}
+<div ng-controller="candidates">
+  <div ng-repeat="candidate in candidates">
+    <div class="panel panel-default entity">
+      <div class="panel-body">
+	<dl>
+	  <dt>Name</dt>
+	  <dd>{{ candidate.candidate }}</dd>
+	  <dt>Committee</dt>
+	  <dd>{{ candidate.committee_name }}</dd>
+	</dl>
+      </div>
+    </div>
+  </div>
+</div>
+{% endraw %}

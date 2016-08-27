@@ -28,4 +28,6 @@ angular.module('odca', [])
           });
         });
     });
-  });
+  })
+  .controller('candidates', require('./candidates').controller)
+  .controller('committees', require('./committees').controller);

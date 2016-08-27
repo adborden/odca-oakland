@@ -1,0 +1,23 @@
+---
+layout: page
+title: Committees
+permalink: /committees/
+javascript: index
+---
+
+{% raw %}
+<div ng-controller="committees">
+  <div ng-repeat="committee in committees">
+    <div class="panel panel-default entity">
+      <div class="panel-body">
+      <dl>
+        <dt>Name</dt>
+        <dd>{{ committee.committee_name }}</dd>
+        <dt>Type</dt>
+        <dd>{{ committee.committee_type }}</dd>
+      </dl>
+    </div>
+  </div>
+</div>
+{% endraw %}
+</main>
