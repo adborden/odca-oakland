@@ -9,13 +9,13 @@ javascript: index
 <div ng-controller="candidates">
   <div ng-repeat="candidate in candidates">
     <div class="panel panel-default entity">
-      <div class="panel-body">
-	<dl>
-	  <dt>Name</dt>
-	  <dd>{{ candidate.candidate }}</dd>
-	  <dt>Committee</dt>
-	  <dd>{{ candidate.committee_name }}</dd>
-	</dl>
+      <div class="panel-body candidate">
+	<div class="candidate__photo">
+	  <img src="{{ candidate.photo }}" alt="{{ candidate.candidate }}">
+	</div>
+	<div class="candidate__info">
+	  <div class="candidate__name">{{ candidate.candidate }}</div>
+	  <div class="candidate__committee">{{ candidate.committee_name }}</div>
       </div>
     </div>
   </div>
