@@ -3,3 +3,27 @@
  * Add your custom SASS/SCSS styles here. Looking for plain ol' CSS? Check out
  * `assets/css/custom.css` instead.
  **/
+
+.candidate {
+  .candidate__photo {
+    display: inline-block;
+    margin-right: 1rem;
+
+    img {
+      object-fit: cover;
+      height: 160px;
+      width: 160px;
+    }
+  }
+
+  .candidate__info {
+    display: inline-block;
+    max-width: 30rem;
+    min-width: 20rem;
+    vertical-align: top;
+  }
+
+  .candidate__name {
+    font-weight: bold;
+  }
+}
