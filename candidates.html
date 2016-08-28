@@ -11,11 +11,13 @@ javascript: index
     <div class="panel panel-default entity">
       <div class="panel-body candidate">
 	<div class="candidate__photo">
-	  <img src="{{ candidate.photo }}" alt="{{ candidate.candidate }}">
+	  <img ng-src="{{ candidate.photo }}" alt="{{ candidate.candidate }}">
 	</div>
 	<div class="candidate__info">
 	  <div class="candidate__name">{{ candidate.candidate }}</div>
-	  <div class="candidate__committee">{{ candidate.committee_name }}</div>
+	  <div class="candidate__committee"><span class="glyphicon
+	  glyphicon-bullhorn"></span> {{ candidate.committee_name }}</span></div>
+	  <div class="candidate__website"><span class="glyphicon glyphicon-globe"></span> {{ candidate.committee_name }}</div>
       </div>
     </div>
   </div>
