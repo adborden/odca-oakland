@@ -47,4 +47,5 @@ git config user.name "GH Pages deploy script"
 git config user.email "user@example.com"
 git add .
 git commit -m "Deploy to GH Pages"
-git push --force --quiet "https://x-api-token:${GITHUB_TOKEN}@${GITHUB_REPO}.git" master:gh-pages &> /dev/null
+git push --force --quiet "https://x-api-token:${GITHUB_TOKEN}@${GITHUB_REPO}.git" master:gh-pages &> /dev/null || ( exit_code=$?; echo Error deploying to GH Pages: exit $exit_code >&2; exit $exit_code )
+echo ok
