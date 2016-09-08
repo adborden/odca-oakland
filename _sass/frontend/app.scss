@@ -1,0 +1,30 @@
+@import "vendor/vendor";
+
+/* =======================================================================
+    App Layout
+======================================================================= */
+body .main {
+    @include container-fixed();
+    padding: 40px 15px;
+}
+
+
+/* =======================================================================
+    LESS file imports
+======================================================================= */
+@import "components/common/styles/styles";
+@import "components/common/globalSearchBar/globalSearchBar";
+@import "components/common/localityListing/localityListing";
+@import "components/common/pageHeaderBreadcrumbs/pageHeaderBreadcrumbs";
+@import "components/common/pageHeader/pageHeader";
+@import "components/common/blankGraph/blankGraph";
+@import "components/common/linkList/linkList";
+@import "components/common/contributionsCategoryTable/contributionsCategoryTable";
+
+@import "components/homePageModule/homePage";
+@import "components/appMainModule/aboutPageModule/aboutPage";
+@import "components/appMainModule/committeePageModule/committeePage";
+@import "components/appMainModule/faqPageModule/faqPage";
+
+//Angular UI Bootstrap Required Styling:
+.nav, .pagination, .carousel, .panel-title a { cursor: pointer; }

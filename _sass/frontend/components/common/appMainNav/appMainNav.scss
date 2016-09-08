@@ -1,0 +1,69 @@
+$HeaderLightGreyBorderColor: #efefef;
+$HeaderBackgroundColor: $white;
+
+.appMainHeader {
+	background-color: $HeaderBackgroundColor;
+}
+
+//Bootstrap Overrides
+.navbar {
+	border-bottom: 5px solid $brand-warning;
+	box-sizing: border-box;
+	margin-bottom: 0;
+}
+
+.nav > li {
+	border-left: 1px solid $HeaderLightGreyBorderColor;
+
+	&:nth-last-child(1) {
+		border-right: 1px solid $HeaderLightGreyBorderColor;
+	}
+}
+
+.navbar-default {
+	.navbar-toggle {
+
+		&:hover, &:focus {
+			background-color: $navbar-default-bg;
+		}
+
+		.icon-bar {
+			background-color: $navbar-default-brand-color;
+		}
+	}
+}
+
+.navbar-toggle {
+	.icon-bar {
+		width: 26px;
+		height: 3px;
+	}
+}
+
+.appMainNav-navbar-toggle {
+	@extend .pull-left;
+	border: none;
+	border-radius: 0;
+	margin-left: $navbar-padding-horizontal;
+	margin-right: 0;
+	margin-top: 12px;
+}
+
+.appMainNav-navbar-brand {
+	padding-left: 6px;
+	font-family: $font-family-serif;
+	font-size: 26px;
+}
+
+.appMainNav-navbar-brand--span {
+	color: $bodyTextColor;
+}
+
+.appMainNav-icon-bar {
+	width: 26px;
+	height: 3px;
+}
+
+.navbar-search {
+	@extend .pull-right;
+}

@@ -1,0 +1,24 @@
+.odca-pageHeader {
+	font-family: $headings-font-family;
+}
+
+.odca-pageHeader-title {
+	color: $core-grey-1;
+	font-size: 2.4em;
+	margin-top: 0;
+	margin-bottom: 5px;
+	text-transform: capitalize;
+}
+
+.odca-pageHeader-subtitle {
+	font-size: 1.4em;
+	color: $core-grey-3;
+	margin-top: 5px;
+	margin-bottom: 0;
+}
+
+.odca-pageHeader-nextElection {
+	@extend .homepageText-subheader;
+	color: $core-grey-2;
+	margin-top: 12.5px;
+}

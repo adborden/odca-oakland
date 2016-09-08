@@ -36,6 +36,5 @@
     "lazy.js": "^0.4.2"
   },
   "devDependencies": {
-    "less2sass": "^1.0.2"
   }
 }
