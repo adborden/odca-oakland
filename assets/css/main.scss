@@ -3,6 +3,7 @@
 ---
 @charset "utf-8";
 
+@import "frontend/components/common/styles/custom-bs-variables";
 @import "bootstrap";
-@import "custom";
 @import "frontend/app";
+@import "custom";
