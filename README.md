@@ -1,6 +1,6 @@
-# Jekyll Prototype
+# Open Disclosure Oakland
 
-A Jekyll template for prototyping simple websites.
+Campaign finance data for Oakland.
 
 
 ## Prerequisites
@@ -13,11 +13,6 @@ and [npm][npm-site] to manage dependencies.
 
 
 ## Usage
-
-Clone this template from [github][repo-url].
-
-    $ git clone https://github.com/adborden/jekyll-prototype.git
-    $ cd jekyll-prototype
 
 Install the dependencies and start the development server.
 

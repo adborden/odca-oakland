@@ -8,7 +8,7 @@ env:
 
 deploy:
   provider: script
-  script: ./_bin/gh-deploy.sh adborden/odca-audit
+  script: ./_bin/gh-deploy.sh adborden/odca-oakland
   skip_cleanup: true
   on:
     branch: master

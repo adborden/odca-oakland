@@ -1,8 +1,7 @@
 {
-  "name": "jekyll-prototype",
+  "name": "odca-oakland",
   "version": "0.0.0",
-  "description": "A jekyll template for prototyping simple websites.",
-  "main": "index.js",
+  "description": "Campaign finance data for Oakland",
   "scripts": {
     "build": "npm run build-js && npm run build-thirdparty",
     "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify $entrypoint -o _site/assets/js/${bundle_name}.bundle.js; done",
@@ -13,21 +12,18 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/adborden/jekyll-prototype.git"
+    "url": "git+https://github.com/adborden/odca-oakland.git"
   },
   "keywords": [
-    "jekyll",
-    "prototype",
-    "template",
-    "scaffold",
-    "simple"
+    "campaign finance",
+    "oakland"
   ],
   "author": "Aaron D Borden <adborden@a14n.net>",
   "license": "AGPL-3.0",
   "bugs": {
-    "url": "https://github.com/adborden/jekyll-prototype/issues"
+    "url": "https://github.com/adborden/odca-oakland/issues"
   },
-  "homepage": "https://github.com/adborden/jekyll-prototype#readme",
+  "homepage": "https://github.com/adborden/odca-oakland#readme",
   "dependencies": {
     "angular": "^1.5.8",
     "bootstrap-sass": "^3.3.6",
