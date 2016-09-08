@@ -3,10 +3,10 @@
   "version": "0.0.0",
   "description": "Campaign finance data for Oakland",
   "scripts": {
-    "build": "npm run build-js && npm run build-thirdparty",
+    "build": "npm run build-js && npm run build-thirdparty && npm run build-jekyll",
     "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify $entrypoint -o _site/assets/js/${bundle_name}.bundle.js; done",
-    "build-thirdparty": "mkdir -p _site/assets && cp -R node_modules/bootstrap-sass/assets/{fonts,images,javascripts} _site/assets/ && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/ && jekyll build",
-    "less2sass": "less2sass",
+    "build-thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
+    "build-jekyll": "jekyll build",
     "serve": "npm run build && jekyll serve",
     "test": "echo No test specified, moving on."
   },

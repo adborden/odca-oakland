@@ -4,11 +4,16 @@ node_js:
 
 env:
   global:
-  - secure: "C8yRHM9vt55v3oXrGeRH4eQ2uGafvLeDn/iku83bQ6gGpgTlh3QDpw8BbcGj+6vG+K0zcpcOcBf+barn6n+nA4d6uP6T36QtwLpLFMB2WwqoXJPRqDB+hV8AnBiIxYBwXsQS/Gwt+Xur3qQXns5Xqa1mm6P1W1eiMHDGNqo8S5tQYbDy2sp2QzqS0AXaLhoHV0/NsWJFUToxaNfQ77DgtdjPO4yXx9U7lPzssHToHLJXVpkhUfxo40PEMdF4TGccTqz7FB3CPNBfwtoDHu6vRhDq1IU1xIwuw4IORBEsqMFicEuaOwYhl6osrVwaSrx3+jjtTHEqXryoiajnQp2lVo3Dl8aUdwO2fdZ/7qWfz//XXU/51mZez/Z1zOw56tdm0voKpYEeSFiGm/xXYOcE7HmbORgqVWjCywNecMA+Bo06y0ZZ7dhqS9zVCgVTKWY3G5xkw6Z/JE5krh7Wefz7Zxljsz0CGWP+u0vB+v0NVpTbTZrI5CW43JF+CqM2WBgQDq0O0u0MyAWLLkazSNl7krXzgNA7V435Cuos9iHH5dk4ZqnDU3Rh7eITCbLb9sbeUv5N+MZsFkltT3uckjH+GwNnDbh9ICkDFcESxgRaFFqa3cRwbRBkAvtUGWMwPGkC7OrOqHotYBar7QRD8xBEbxdCp/umx+yYRHmAKuV/vbE=" # GITHUB_TOKEN
+  - secure: "JyxXbVp+esy/g2Dxw4IhFzDnAiM6HKVHrj/vimq/cqJgQ3z4MqMv44IHJ+7cwWFfGGwsAHLryd+F013qRIGujUu0cHCxA5wjzYMU2Vl7YLaDd0IrH4DqLQdMtuzRn5zhz3+COIcHSk1+HN/ALYWzGmI1GUDozjHYw665T143T2DCmGEtn5MAXx0pJBo2eEG9Ua8lwpTPAFuM0pyUGzfxHht2Mmjpuw1wyNu73C/sKf9BPWZCYP2tqa8TZp5apUmYU8/giVjIb9zwnuCZRd+tJn3oN5kg/rWbhX2gKLwGQoWtczLRCZIHSP4gLCX3tBvK3o6ZDK53PVtRJkuPQSL7VxHNLDcoPvk++xOScLPxrIxNlRZOnOdy+0Fbk7LVimpzQE29VqLDzDZ0qJNiNvUx/t/6DTRZ/k8H+h0XRU+Rigl1vkBuadGVxoaUjwPCmZKnTelaA12IjpDiXEpkk4oHTlCGC4BbDAaVrFL5l6xgjGJt4yLGzUQGOcUjRMJ58cqWVH4XGXR2nmGUi2GsGdhGy9813JpDd3MJgzjPwqnAl98Oy1eHADDPuf2s0RZ9BSwD0FmA4AcQmUke0Vw963jZvUwqs9wzlDDcZB3QwwZiruMb8z9wIf4brVRiN00izN4n5Vw6+YXGPRX1um9cK4fsiLaoLv3Qcvd5q+V5tpbAr+Q=" # GITHUB_TOKEN
+
+before_deploy:
+  - rvm install 2.2
+  - rvm use 2.2
+  - gem install jekyll
 
 deploy:
   provider: script
   script: ./_bin/gh-deploy.sh adborden/odca-oakland
   skip_cleanup: true
   on:
-    branch: master
+    branch: feature/travis
