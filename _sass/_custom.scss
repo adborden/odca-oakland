@@ -18,13 +18,18 @@
 
   .candidate__info {
     display: inline-block;
-    max-width: 30rem;
+    max-width: calc(100% - 160px);
     min-width: 20rem;
+    overflow-x: hidden;
     vertical-align: top;
   }
 
   .candidate__name {
     font-weight: bold;
+  }
+
+  .candidate__website {
+    word-wrap: break-word;
   }
 
   .glyphicon {
