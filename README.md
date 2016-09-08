@@ -21,6 +21,10 @@ Install the dependencies and start the development server.
 
 Open your browser to [http://localhost:4000/odca-oakland/](http://localhost:4000/odca-oakland/).
 
+For development, you can rebuild the project as your files change.
+
+    $ npm run watch
+
 
 --
 _This prototype is based on

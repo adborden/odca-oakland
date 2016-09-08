@@ -8,7 +8,8 @@
     "build-thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
     "build-jekyll": "jekyll build",
     "serve": "npm run build && jekyll serve",
-    "test": "echo No test specified, moving on."
+    "test": "echo No test specified, moving on.",
+    "watch": "watch -d --wait 1 'npm run build-js' src & npm run serve"
   },
   "repository": {
     "type": "git",
@@ -35,6 +36,7 @@
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
     "lodash": "^4.15.0",
-    "stringify": "^5.1.0"
+    "stringify": "^5.1.0",
+    "watch": "^0.19.2"
   }
 }
