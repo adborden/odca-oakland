@@ -4,7 +4,7 @@
   "description": "Campaign finance data for Oakland",
   "scripts": {
     "build": "npm run build-js && npm run build-thirdparty && npm run build-jekyll",
-    "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify $entrypoint -o _site/assets/js/${bundle_name}.bundle.js; done",
+    "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify -t [ stringify --extensions [ .html ] ] $entrypoint -o _site/assets/js/${bundle_name}.bundle.js; done",
     "build-thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
     "build-jekyll": "jekyll build",
     "serve": "npm run build && jekyll serve",
@@ -32,5 +32,9 @@
     "lazy.js": "^0.4.2"
   },
   "devDependencies": {
+    "angular-resource": "^1.5.8",
+    "angular-route": "^1.5.8",
+    "lodash": "^4.15.0",
+    "stringify": "^5.1.0"
   }
 }

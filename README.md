@@ -19,7 +19,7 @@ Install the dependencies and start the development server.
     $ npm install
     $ npm run serve
 
-Open your browser to [http://localhost:4000/](http://localhost:4000/).
+Open your browser to [http://localhost:4000/odca-oakland/](http://localhost:4000/odca-oakland/).
 
 
 --

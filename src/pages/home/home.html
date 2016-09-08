@@ -1,0 +1,16 @@
+<div>
+  <div ng-repeat="candidate in vm.candidates">
+    <div class="panel panel-default entity">
+      <div class="panel-body candidate">
+	<div class="candidate__photo">
+	  <img ng-src="{{ candidate.photo_url }}" alt="{{ candidate.name }}">
+	</div>
+	<div class="candidate__info">
+	  <div class="candidate__name">{{ candidate.name }}</div>
+	  <div class="candidate__committee"><span class="glyphicon
+          glyphicon-bullhorn"></span> <a ng-href="https://twitter.com/{{ candidate.twitter_url }}">{{ candidate.twitter_url }}</a></span></div>
+          <div class="candidate__website"><span class="glyphicon glyphicon-globe"></span> <a ng-href="{{ candidate.website_url }}">{{ candidate.website_url }}</a></div>
+      </div>
+    </div>
+  </div>
+</div>
