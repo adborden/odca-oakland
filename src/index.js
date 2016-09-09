@@ -10,7 +10,8 @@ var angular = require('angular');
 
 angular.module('odca', [
   require('angular-resource'),
-  require('angular-route')
+  require('angular-route'),
+  require('./static')
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {
@@ -22,4 +23,3 @@ angular.module('odca', [
   });
 
 require('./common');
-require('./static');
