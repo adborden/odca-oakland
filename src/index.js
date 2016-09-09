@@ -11,6 +11,7 @@ var angular = require('angular');
 angular.module('odca', [
   require('angular-resource'),
   require('angular-route'),
+  require('./common'),
   require('./static')
 ])
   .constant('base_url', '/odca-oakland')
@@ -21,5 +22,3 @@ angular.module('odca', [
       .when('/candidate/:candidate_id', require('./pages/candidate'))
       .when('/locality/:locality_id', require('./pages/locality'));
   });
-
-require('./common');

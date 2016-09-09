@@ -2,17 +2,17 @@
 
 var angular = require('angular');
 
-function defaultFilterFactory () {
-  return defaultFilter;
+angular.module('common', [])
+  .filter('default', function () {
+    return defaultFilter;
 
-  function defaultFilter (value, _default) {
-    if (!value) {
-      return _default;
+    function defaultFilter (value, _default) {
+      if (!value) {
+        return _default;
+      }
+
+      return value;
     }
+  });
 
-    return value;
-  }
-}
-
-angular.module('odca')
-  .filter('default', defaultFilterFactory);
+module.exports = 'common';
