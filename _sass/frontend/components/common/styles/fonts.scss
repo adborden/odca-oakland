@@ -54,9 +54,29 @@ $creteRound-regular: 400;
 }
 
 .text-semibold {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .text-bold {
   font-weight: 700;
+}
+
+.text-xsmall {
+  font-size: 1.8rem;
+}
+
+.text-small {
+  font-size: 2rem;
+}
+
+.text-medium {
+  font-size: 2.2rem;
+}
+
+.text-large {
+  font-size: 2.4rem;
+}
+
+.text-xlarge {
+  font-size: 2.6rem;
 }

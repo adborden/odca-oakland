@@ -8,10 +8,30 @@ var static_backend_url = 'https://disclosure-backend-static.tdooner.com';
 angular.module('odca')
   .factory('static_api', function ($resource) {
     return {
-      current_ballot: $resource(static_backend_url + '/locality/:locality_id/current_ballot'),
-      candidate: $resource(static_backend_url + '/candidate/:candidate_id', {}, {
-        supporting: {method: 'get', url: static_backend_url + '/candidate/:candidate_id/supporting'},
-        opposing: {method: 'get', url: static_backend_url + '/candidate/:candidate_id/opposing'}
+      candidate: api_group('/candidate/:candidate_id', {}, {
+        supporting: {method: 'get', url: '/supporting'},
+        opposing: {method: 'get', url: '/opposing'}
+      }),
+      locality: api_group('/locality/:locality_id', {}, {
+        get: {method: 'get', transformResponse: arrayFirst}, // Workaround for backend returning an  array here
+        current_ballot: {method: 'get', url: '/current_ballot'}
       })
     };
+
+    function api_group (base_url, defaultParams, actions) {
+      var absolute_url = static_backend_url + base_url;
+      defaultParams = defaultParams || {};
+
+      var resourceActions = {};
+      Object.keys(actions).forEach(function (actionName) {
+        var action = actions[actionName];
+        resourceActions[actionName] = angular.extend({}, action, {url: absolute_url + (action.url || '')});
+      });
+
+      return $resource(absolute_url, defaultParams, resourceActions);
+    }
+
+    function arrayFirst (data) {
+      return angular.fromJson(data)[0];
+    }
   });
