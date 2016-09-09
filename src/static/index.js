@@ -5,7 +5,9 @@ var angular = require('angular');
 
 var static_backend_url = 'https://disclosure-backend-static.tdooner.com';
 
-angular.module('odca')
+angular.module('static_api', [
+  require('angular-resource')
+])
   .factory('static_api', function ($resource) {
     return {
       candidate: api_group('/candidate/:candidate_id', {}, {
@@ -35,3 +37,5 @@ angular.module('odca')
       return angular.fromJson(data)[0];
     }
   });
+
+module.exports = 'static_api';
