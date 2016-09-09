@@ -4,6 +4,8 @@ var _ = require('lodash');
 var utils = require('../../utils');
 
 function HomeController (ballot) {
+  'ngIngject';
+
   this.ballot = ballot;
   var candidates = this.candidates = [];
 

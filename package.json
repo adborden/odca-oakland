@@ -4,7 +4,7 @@
   "description": "Campaign finance data for Oakland",
   "scripts": {
     "build": "npm run build-js && npm run build-thirdparty && npm run build-jekyll",
-    "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify -t [ stringify --extensions [ .html ] ] $entrypoint -o _site/assets/js/${bundle_name}.bundle.js; done",
+    "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify --debug -t [ stringify --extensions [ .html ] ] -t browserify-ngannotate $entrypoint | exorcist --base _site/assets/js _site/assets/js/${bundle_name}.bundle.js.map > _site/assets/js/${bundle_name}.bundle.js; uglifyjs --mangle --compress --prefix 3 --in-source-map _site/assets/js/${bundle_name}.bundle.js.map --source-map-url ${bundle_name}.bundle.min.js.map --source-map _site/assets/js/${bundle_name}.bundle.min.js.map -o _site/assets/js/${bundle_name}.bundle.min.js -- _site/assets/js/${bundle_name}.bundle.js; done",
     "build-thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
     "build-jekyll": "jekyll build",
     "lint": "eslint \"src/**/*.js\"",
@@ -30,15 +30,17 @@
     "angular": "^1.5.8",
     "bootstrap-sass": "^3.3.6",
     "browserify": "^13.0.1",
-    "jquery": "^2.2.3",
-    "lazy.js": "^0.4.2"
+    "jquery": "^2.2.3"
   },
   "devDependencies": {
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
+    "browserify-ngannotate": "^2.0.0",
     "eslint": "^3.4.0",
     "lodash": "^4.15.0",
+    "ng-annotate": "^1.2.1",
     "stringify": "^5.1.0",
+    "uglify-js": "^2.7.3",
     "watch": "^0.19.2"
   }
 }
