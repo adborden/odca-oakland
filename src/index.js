@@ -7,7 +7,6 @@
 'use strict';
 
 var angular = require('angular');
-var home = require('./pages/home');
 var candidate = require('./pages/candidate');
 var utils = require('./utils');
 
@@ -20,16 +19,7 @@ angular.module('odca', [
   .config(function ($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(false).hashPrefix('!');
     $routeProvider
-      .when('/', {
-        template: home.template,
-        controller: home.controller,
-        controllerAs: 'vm',
-        resolve: {
-          ballot: function (static_api) {
-            return static_api.locality.current_ballot({locality_id: 2}); // Oakland
-          }
-        }
-      })
+      .when('/', require('./pages/home'))
       .when('/candidate/:candidate_id', {
         template: candidate.template,
         controller: candidate.controller,
