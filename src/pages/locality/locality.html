@@ -1,0 +1,18 @@
+<h2>{{ vm.locality.name }}</h2>
+<span>Next election: {{ vm.ballot.date | date:'MMMM d, yyyy' }}</span>
+<h3>Offices</h3>
+<div class="divided-section">
+  <ul class="odca-list">
+    <li ng-repeat="office in vm.offices" class="odca-list-item">
+      <a href="" class="odca-list-item__link"><div class="odca-list-item__content">{{ office.name }}</div><div class="odca-list-item__chevron"></div></a>
+    </li>
+  </ul>
+</div>
+<h3>Measures</h3>
+<div class="divided-section">
+  <ul class="odca-list">
+    <li ng-repeat="referendum in vm.referendums" class="odca-list-item">
+      <a href="" class="odca-list-item__link"><div class="odca-list-item__content">Measure {{ referendum.number }} {{ referendum.title }}</div><div class="odca-list-item__chevron"></div></a>
+    </li>
+  </ul>
+</div>

@@ -9,6 +9,7 @@
 var angular = require('angular');
 var home = require('./pages/home');
 var candidate = require('./pages/candidate');
+var utils = require('./utils');
 
 
 angular.module('odca', [
@@ -25,7 +26,7 @@ angular.module('odca', [
         controllerAs: 'vm',
         resolve: {
           ballot: function (static_api) {
-            return static_api.current_ballot.get({locality_id: 2}); // Oakland
+            return static_api.locality.current_ballot({locality_id: 2}); // Oakland
           }
         }
       })
@@ -44,7 +45,8 @@ angular.module('odca', [
             return static_api.candidate.supporting({candidate_id: $route.current.params.candidate_id});
           }
         }
-      });
+      })
+      .when('/locality/:locality_id', require('./pages/locality'));
   });
 
 require('./common');

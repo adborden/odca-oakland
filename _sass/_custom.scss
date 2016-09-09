@@ -36,3 +36,47 @@
     color: rgba(0, 0, 0, 0.2);
   }
 }
+
+.odca-list {
+  padding-left: 0;
+  margin: -1rem; // TODO remove the padding on divided-section
+
+}
+.odca-list-item {
+  @extend .text-large;
+  border-top: 1px solid $body-bg;
+  list-style: none;
+
+  &:first-child {
+    border-top: none;
+  }
+
+  &:hover {
+    background-color: $body-bg;
+  }
+
+  .odca-list-item__link {
+    display: inline-block;
+    height: 100%;
+    padding: 1.5rem 3rem;
+    width: 100%;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  .odca-list-item__content {
+    @extend .text-semibold;
+    color: $core-grey-2;
+    float: left;
+    line-height: 2.4rem;
+    width: calc(100% - 3rem);
+  }
+
+  .odca-list-item__chevron {
+    @extend .glyphicon;
+    @extend .glyphicon-chevron-right;
+    float: right;
+  }
+}
