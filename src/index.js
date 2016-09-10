@@ -12,7 +12,8 @@ angular.module('odca', [
   require('angular-resource'),
   require('angular-route'),
   require('./common'),
-  require('./static')
+  require('./static'),
+  require('./detail_panel')
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {
