@@ -4,14 +4,12 @@ var angular = require('angular');
 angular.module('detail_panel', [])
   .component('detailPanel', {
     template: require('./detail_panel.html'),
-    controller: DetailPanelController,
     bindings: {
       detail: '='
     }
   })
   .component('officeDetail', {
     template: require('./office_detail.html'),
-    controller: OfficeDetailController,
     bindings: {
       office: '='
     }
@@ -25,13 +23,10 @@ angular.module('detail_panel', [])
   });
 
 
-function DetailPanelController () {
-}
-
-function OfficeDetailController () {
-}
-
-function ReferendumDetailController () {
+function ReferendumDetailController ($route, static_api) {
+  var referendum_id = $route.current.params.referendum_id;
+  this.supporting = static_api.referendum.supporting({referendum_id: referendum_id});
+  this.opposing = static_api.referendum.opposing({referendum_id: referendum_id});
 }
 
 

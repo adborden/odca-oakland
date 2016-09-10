@@ -1,5 +1,18 @@
 <div>
-  <h3>Measure {{ $ctrl.referendum.number }}</h3>
-  <h4>{{ $ctrl.referendum.title }}</h4>
-  <p>{{ $ctrl.referendum.summary }}</p>
+  <div class="section">
+    <h3>Measure {{ $ctrl.referendum.number }}</h3>
+    <h4>{{ $ctrl.referendum.title }}</h4>
+  </div>
+  <div class="section">
+    <h3>Abstract</h3>
+    <p>{{ $ctrl.referendum.summary }}</p>
+  </div>
+  <div class="section">
+    <h3 class="section-header">Money supporting the measure <span class="section-header__subtext">{{ $ctrl.supporting.money_supporting | default:0 | currency }}</span></h3>
+    <money-by-region money="$ctrl.supporting.money_supporting_by_region"></money-by-region>
+  </div>
+  <div class="section">
+    <h3 class="section-header">Money opposing the measure <span class="section-header__subtext">{{ $ctrl.opposing.money_opposing | default:0 | currency }}</span></h3>
+    <money-by-region money="$ctrl.opposing.money_opposing_by_region"></money-by-region>
+  </div>
 </div>

@@ -80,3 +80,21 @@
     float: right;
   }
 }
+
+.section-header {
+  color: $core-grey-3;
+
+  .section-header__subtext {
+    color: $core-grey-2;
+    margin-left: 5rem;
+  }
+}
+
+.section {
+  border-top: 2px solid #ffdd1f;
+  padding: 0 2rem;
+
+  &:first-child {
+    border-top: none;
+  }
+}
