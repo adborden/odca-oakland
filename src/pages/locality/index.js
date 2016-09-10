@@ -3,28 +3,25 @@
 var _ = require('lodash/core');
 var utils = require('../../utils');
 
-function LocalityController ($rootScope, $route, locality, ballot) {
+function LocalityController ($interpolate, $rootScope, $route, locality, ballot) {
   this.locality = locality;
   this.ballot = ballot;
-  this.current_detail = null;
+  this.ballot_item_detail = null;
 
   var self = this;
   var offices = this.offices = [];
   var referendums = this.referendums = [];
 
   // Find the current ballot_item, if any
-  ballot.$promise.then(function (ballot) {
-    return findBallotItem($route.current.params.ballot_item_id);
+  ballot.$promise.then(function () {
+    return findBallotItem($route.current.params);
   }).then(function (ballot_item) {
-    if (ballot_item) {
-      self.current_detail = currentDetailFactory(ballot_item);
-    }
+    self.ballot_item_detail = currentDetailFactory(ballot_item);
   });
 
   // Listen to route changes to update the ballot_item detail
-  $rootScope.$on('$routeUpdate', function (event, next, prev) {
-    var ballot_item_id = next.params.ballot_item_id;
-    self.current_detail = currentDetailFactory(findBallotItem(ballot_item_id));
+  $rootScope.$on('$routeUpdate', function (event, next) {
+    self.ballot_item_detail = currentDetailFactory(findBallotItem(next.params));
   });
 
   // Sort ballot_items into offices/referendums
@@ -52,10 +49,21 @@ function LocalityController ($rootScope, $route, locality, ballot) {
     utils.array_update(referendums, contests.referendums);
   });
 
-  // Find a ballot_item_id from the ballot
-  function findBallotItem(ballot_item_id) {
+  // Find a ballot_item_id from the ballot based on url parameters, undefined if the ballot_item is not found
+  function findBallotItem(params) {
+    var ballot_item_id, contest_type;
+
+    // Figure out contest_type based on parameter
+    if (params.referendum_id) {
+      ballot_item_id = params.referendum_id;
+      contest_type = 'Referendum';
+    } else {
+      ballot_item_id = params.office_id;
+      contest_type = 'Office';
+    }
+
     return ballot.ballot_items.find(function (ballot_item) {
-      return ballot_item.id === parseInt(ballot_item_id);
+      return ballot_item.id === parseInt(ballot_item_id) && ballot_item.contest_type == contest_type;
     });
   }
 
@@ -63,8 +71,10 @@ function LocalityController ($rootScope, $route, locality, ballot) {
   function currentDetailFactory(ballot_item) {
     ballot_item = ballot_item || {};
 
-    return {
-      title: ballot_item.name || ballot_item.title
+    return ballot_item.contest_type == 'Office' ? {
+      title: ballot_item.name
+    } : {
+      title: $interpolate('Measure {{ number }}: {{ title }}', false, null, true)(ballot_item)
     };
   }
 }

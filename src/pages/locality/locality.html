@@ -10,7 +10,7 @@
     <div class="divided-section">
       <ul class="odca-list">
         <li ng-repeat="office in vm.offices" class="odca-list-item">
-          <a ng-href="{{ '/locality/' + vm.locality.id  | url:{ballot_item_id: office.id} }}" class="odca-list-item__link"><div class="odca-list-item__content">{{ office.name }}</div><div class="odca-list-item__chevron"></div></a>
+          <a ng-href="{{ '/locality/' + vm.locality.id  | url:{office_id: office.id} }}" class="odca-list-item__link"><div class="odca-list-item__content">{{ office.name }}</div><div class="odca-list-item__chevron"></div></a>
         </li>
       </ul>
     </div>
@@ -18,12 +18,12 @@
     <div class="divided-section">
       <ul class="odca-list">
         <li ng-repeat="referendum in vm.referendums" class="odca-list-item">
-          <a ng-href="{{ '/locality/' + vm.locality.id  | url:{ballot_item_id: referendum.id} }}" class="odca-list-item__link"><div class="odca-list-item__content">Measure {{ referendum.number }} {{ referendum.title }}</div><div class="odca-list-item__chevron"></div></a>
+          <a ng-href="{{ '/locality/' + vm.locality.id  | url:{referendum_id: referendum.id} }}" class="odca-list-item__link"><div class="odca-list-item__content">Measure {{ referendum.number }} {{ referendum.title }}</div><div class="odca-list-item__chevron"></div></a>
         </li>
       </ul>
     </div>
   </div>
   <div class="col-sm-9 col-md-8">
-    <detail-panel detail="vm.current_detail"></detail-panel>
+    <detail-panel detail="vm.ballot_item_detail"></detail-panel>
   </div>
 </div>
