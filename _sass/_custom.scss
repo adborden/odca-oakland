@@ -98,3 +98,30 @@
     border-top: none;
   }
 }
+
+money-bar {
+  display: block; // block display so we can calculate width
+
+  .money-bar__measure {
+    background-color: $linkTextColor;
+    display: inline-block;
+    height: 2rem;
+    margin-right: 1rem;
+    min-width: 5px;
+  }
+
+  .money-bar__measure--red {
+    background-color: #e95300;
+  }
+
+  .money-bar__measure--green {
+    background-color: #0fc48b;
+  }
+
+  .money-bar__value {
+    @extend .number;
+    color: $core-grey-3;
+    display: inline-block;
+    vertical-align: top;
+  }
+}
