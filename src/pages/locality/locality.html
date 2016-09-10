@@ -1,18 +1,29 @@
-<h2>{{ vm.locality.name }}</h2>
-<span>Next election: {{ vm.ballot.date | date:'MMMM d, yyyy' }}</span>
-<h3>Offices</h3>
-<div class="divided-section">
-  <ul class="odca-list">
-    <li ng-repeat="office in vm.offices" class="odca-list-item">
-      <a href="" class="odca-list-item__link"><div class="odca-list-item__content">{{ office.name }}</div><div class="odca-list-item__chevron"></div></a>
-    </li>
-  </ul>
+<div class="row">
+  <div class="col-xs-12">
+    <h2>{{ vm.locality.name }}</h2>
+    <span>Next election: {{ vm.ballot.date | date:'MMMM d, yyyy' }}</span>
+  </div>
 </div>
-<h3>Measures</h3>
-<div class="divided-section">
-  <ul class="odca-list">
-    <li ng-repeat="referendum in vm.referendums" class="odca-list-item">
-      <a href="" class="odca-list-item__link"><div class="odca-list-item__content">Measure {{ referendum.number }} {{ referendum.title }}</div><div class="odca-list-item__chevron"></div></a>
-    </li>
-  </ul>
+<div class="row">
+  <div class="col-sm-3 col-md-4">
+    <h3>Offices</h3>
+    <div class="divided-section">
+      <ul class="odca-list">
+        <li ng-repeat="office in vm.offices" class="odca-list-item">
+          <a ng-href="{{ '/locality/' + vm.locality.id  | url:{office_id: office.id} }}" class="odca-list-item__link"><div class="odca-list-item__content">{{ office.name }}</div><div class="odca-list-item__chevron"></div></a>
+        </li>
+      </ul>
+    </div>
+    <h3>Measures</h3>
+    <div class="divided-section">
+      <ul class="odca-list">
+        <li ng-repeat="referendum in vm.referendums" class="odca-list-item">
+          <a ng-href="{{ '/locality/' + vm.locality.id  | url:{referendum_id: referendum.id} }}" class="odca-list-item__link"><div class="odca-list-item__content">Measure {{ referendum.number }} {{ referendum.title }}</div><div class="odca-list-item__chevron"></div></a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-sm-9 col-md-8">
+    <detail-panel detail="vm.ballot_item_detail"></detail-panel>
+  </div>
 </div>
