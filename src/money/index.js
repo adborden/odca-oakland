@@ -65,6 +65,8 @@ angular.module('money', [
   });
 
 function MoneyBarController ($filter) {
+  'ngInject';
+
   var ctrl = this;
   ctrl.$onInit = init;
   ctrl.displayValue = displayValue;
@@ -91,6 +93,8 @@ function MoneyBarController ($filter) {
 }
 
 function MoneyByRegionController ($scope) {
+  'ngInject';
+
   var ctrl = this;
   ctrl.onVisible = onVisible;
   ctrl.total = null;
