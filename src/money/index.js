@@ -4,7 +4,9 @@ var angular = require('angular');
 angular.module('money', [])
   .component('moneyByRegion', {
     template: require('./money_by_region.html'),
+    controller: MoneyByRegionController,
     bindings: {
+      color: '@',
       money: '='
     }
   })
@@ -18,7 +20,7 @@ angular.module('money', [])
       scope: {
         color: '@', // One of green, red, blue
         format: '@', // How to format the value, money or percentage
-        max: '@',
+        max: '@', // The maximum value (what counts as 100%) and is used to scale the measure
         value: '@' // The value to visualize
       }
     };
@@ -61,6 +63,19 @@ function MoneyBarController ($filter) {
       return '' + value;
     }
   }
+}
+
+function MoneyByRegionController ($scope) {
+  var ctrl = this;
+  ctrl.total = 0;
+
+  $scope.$watch('$ctrl.money', function (money) {
+    if (!money) {
+      return;
+    }
+
+    ctrl.total = money.within_oakland + money.within_california + money.out_of_state;
+  });
 }
 
 module.exports = 'money';

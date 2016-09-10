@@ -125,3 +125,14 @@ money-bar {
     vertical-align: top;
   }
 }
+
+.money-by-region {
+  margin-bottom: 2rem;
+  color: $core-grey-3;
+
+  .money-by-region__heading {
+    @extend .text-small;
+    @extend .text-semibold;
+    line-height: 2;
+  }
+}

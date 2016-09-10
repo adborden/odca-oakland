@@ -1,8 +1,8 @@
-<dl>
-  <dt>Within Oakland</dt>
-  <money-bar value="{{ $ctrl.money.within_oakland }}" format="percentage" color="green"></money-bar>
-  <dt>Within California</dt>
-  <money-bar value="{{ $ctrl.money.within_california }}" format="percentage" color="green"></money-bar>
-  <dt>Out of state</dt>
-  <money-bar value="{{ $ctrl.money.out_of_state }}" format="percentage" color="green"></money-bar>
-</dl>
+<div class="money-by-region">
+  <div class="money-by-region__heading">Within Oakland</div>
+  <money-bar value="{{ $ctrl.money.within_oakland }}" format="percentage" color="{{ $ctrl.color }}" max="{{ $ctrl.total }}"></money-bar>
+  <div class="money-by-region__heading">Within California</div>
+  <money-bar value="{{ $ctrl.money.within_california }}" format="percentage" color="{{ $ctrl.color }}" max="{{ $ctrl.total }}"></money-bar>
+  <div class="money-by-region__heading">Out of state</div>
+  <money-bar value="{{ $ctrl.money.out_of_state }}" format="percentage" color="{{ $ctrl.color }}" max="{{ $ctrl.total }}"></money-bar>
+</div>
