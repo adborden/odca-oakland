@@ -17,7 +17,11 @@ angular.module('static_api', [
       locality: api_group('/locality/:locality_id', {
         get: {method: 'get', transformResponse: arrayFirst}, // Workaround for backend returning an  array here
         current_ballot: {method: 'get', url: '/current_ballot'}
-      })
+      }),
+      referendum: api_group('/referendum/:referendum_id', {
+        supporting: {method: 'get', url: '/supporting'},
+        opposing: {method: 'get', url: '/opposing'}
+      }),
     };
 
     function api_group (base_url, actions, defaultParams) {
