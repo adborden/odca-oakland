@@ -1,16 +1,15 @@
 'use strict';
 
+var angular = require('angular');
+
 function array_update (array, data) {
   Array.prototype.splice.apply(array, [0, array.length].concat(data));
 }
 
 function route (page) {
-  return {
-    template: page.template,
-    controller: page.controller,
-    controllerAs: 'vm',
-    resolve: page.resolve || {}
-  };
+  return angular.extend({}, page, {
+    controllerAs: 'vm'
+  });
 }
 
 module.exports = {
