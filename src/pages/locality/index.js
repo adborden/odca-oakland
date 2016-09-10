@@ -1,5 +1,6 @@
 'use strict';
 
+var angular = require('angular');
 var _ = require('lodash/core');
 var utils = require('../../utils');
 
@@ -70,12 +71,10 @@ function LocalityController ($interpolate, $rootScope, $route, locality, ballot)
   // Factory to create the detail model
   function currentDetailFactory(ballot_item) {
     ballot_item = ballot_item || {};
+    var heading = ballot_item.contest_type == 'Office' ? ballot_item.name :
+      $interpolate('Measure {{ number }}: {{ title }}', false, null, true)(ballot_item);
 
-    return ballot_item.contest_type == 'Office' ? {
-      title: ballot_item.name
-    } : {
-      title: $interpolate('Measure {{ number }}: {{ title }}', false, null, true)(ballot_item)
-    };
+    return angular.extend({heading: heading}, ballot_item);
   }
 }
 

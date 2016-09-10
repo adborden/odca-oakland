@@ -1,0 +1,11 @@
+<div class="panel panel-default entity">
+  <div class="panel-body candidate">
+    <div class="candidate__photo">
+      <img ng-src="{{ $ctrl.candidate.photo_url }}" alt="{{ $ctrl.candidate.name }}">
+    </div>
+    <div class="candidate__info">
+      <div class="candidate__name"><a ng-href="{{ '/candidate/' + $ctrl.candidate.id | url }}">{{ $ctrl.candidate.name }}</a></div>
+      <div class="candidate__committee"><span class="glyphicon glyphicon-bullhorn"></span> <a ng-href="https://twitter.com/{{ $ctrl.candidate.twitter_url }}">{{ $ctrl.candidate.twitter_url }}</a></span></div>
+      <div class="candidate__website"><span class="glyphicon glyphicon-globe"></span> <a ng-href="{{ $ctrl.candidate.website_url }}">{{ $ctrl.candidate.website_url }}</a></div>
+  </div>
+</div>

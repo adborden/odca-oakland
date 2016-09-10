@@ -13,6 +13,7 @@ angular.module('odca', [
   require('angular-route'),
   require('./common'),
   require('./static'),
+  require('./candidates'),
   require('./detail_panel')
 ])
   .constant('base_url', '/odca-oakland')
