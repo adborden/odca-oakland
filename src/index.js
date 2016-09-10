@@ -19,6 +19,8 @@ angular.module('odca', [
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {
+    'ngInject';
+
     $locationProvider.html5Mode(false).hashPrefix('!');
     $routeProvider
       .when('/', require('./pages/home'))

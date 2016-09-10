@@ -11,6 +11,8 @@ angular.module('money', [])
     }
   })
   .directive('moneyBar', function () {
+    'ngInject';
+
     return {
       template: require('./money_bar.html'),
       controller: MoneyBarController,
@@ -40,6 +42,8 @@ angular.module('money', [])
   });
 
 function MoneyBarController ($filter) {
+  'ngInject';
+
   var ctrl = this;
   ctrl.$onInit = init;
   ctrl.displayValue = displayValue;
@@ -66,6 +70,8 @@ function MoneyBarController ($filter) {
 }
 
 function MoneyByRegionController ($scope) {
+  'ngInject';
+
   var ctrl = this;
   ctrl.total = 0;
 

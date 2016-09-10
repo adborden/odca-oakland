@@ -11,6 +11,7 @@ angular.module('candidates', [])
   });
 
 function CandidateController () {
+  'ngInject';
 }
 
 module.exports = 'candidates';

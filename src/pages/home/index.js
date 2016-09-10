@@ -4,7 +4,7 @@ var _ = require('lodash');
 var utils = require('../../utils');
 
 function HomeController (ballot) {
-  'ngIngject';
+  'ngInject';
 
   this.ballot = ballot;
   var candidates = this.candidates = [];
@@ -26,6 +26,7 @@ function HomeController (ballot) {
 }
 
 function ballot (static_api) {
+  'ngInject';
   return static_api.locality.current_ballot({locality_id: 2}); // Oakland
 }
 

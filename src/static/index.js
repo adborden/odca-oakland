@@ -9,6 +9,8 @@ angular.module('static_api', [
   require('angular-resource')
 ])
   .factory('static_api', function ($resource) {
+    'ngInject';
+
     return {
       candidate: api_group('/candidate/:candidate_id', {
         supporting: {method: 'get', url: '/supporting'},

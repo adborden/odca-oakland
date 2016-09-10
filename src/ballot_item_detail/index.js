@@ -25,6 +25,8 @@ angular.module('ballot_item_detail', [])
 
 
 function ReferendumDetailController ($route, static_api) {
+  'ngInject';
+
   var referendum_id = $route.current.params.referendum_id;
   this.supporting = static_api.referendum.supporting({referendum_id: referendum_id});
   this.opposing = static_api.referendum.opposing({referendum_id: referendum_id});

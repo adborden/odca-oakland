@@ -4,6 +4,8 @@ var _ = require('lodash/core');
 var utils = require('../../utils');
 
 function LocalityController ($interpolate, $rootScope, $route, locality, ballot) {
+  'ngInject';
+
   this.locality = locality;
   this.ballot = ballot;
   this.ballot_item = {};
@@ -69,10 +71,12 @@ function LocalityController ($interpolate, $rootScope, $route, locality, ballot)
 }
 
 function ballot ($route, static_api) {
+  'ngInject';
   return static_api.locality.current_ballot({locality_id: $route.current.params.locality_id});
 }
 
 function locality ($route, static_api) {
+  'ngInject';
   return static_api.locality.get({locality_id: $route.current.params.locality_id});
 }
 

@@ -4,6 +4,7 @@ var angular = require('angular');
 
 angular.module('common', [])
   .filter('default', function () {
+    'ngInject';
     return defaultFilter;
 
     function defaultFilter (value, _default) {
@@ -15,6 +16,8 @@ angular.module('common', [])
     }
   })
   .filter('url', function (base_url) {
+    'ngInject';
+
     return urlFilter;
 
     function urlFilter (path, query) {
