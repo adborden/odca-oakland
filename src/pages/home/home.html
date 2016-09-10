@@ -2,7 +2,7 @@
   <div class="col-xs-12">
     <div class="panel panel-info">
       <div class="panel-body">
-        See the upcoming <a href="{{ base_url }}#!/locality/2">Oakland ballot</a>.
+        See the upcoming <a ng-href="{{ '/locality/2' | url }}">Oakland ballot</a>.
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
 	  <img ng-src="{{ candidate.photo_url }}" alt="{{ candidate.name }}">
 	</div>
 	<div class="candidate__info">
-          <div class="candidate__name"><a ng-href="{{ base_url }}#!/candidate/{{ candidate.id }}">{{ candidate.name }}</a></div>
+          <div class="candidate__name"><a ng-href="{{ '/candidate/' + candidate.id | url }}">{{ candidate.name }}</a></div>
           <div class="candidate__committee"><span class="glyphicon glyphicon-bullhorn"></span> <a ng-href="https://twitter.com/{{ candidate.twitter_url }}">{{ candidate.twitter_url }}</a></span></div>
           <div class="candidate__website"><span class="glyphicon glyphicon-globe"></span> <a ng-href="{{ candidate.website_url }}">{{ candidate.website_url }}</a></div>
       </div>
