@@ -8,9 +8,30 @@ angular.module('detail_panel', [])
     bindings: {
       detail: '='
     }
+  })
+  .component('officeDetail', {
+    template: require('./office_detail.html'),
+    controller: OfficeDetailController,
+    bindings: {
+      office: '='
+    }
+  })
+  .component('referendumDetail', {
+    template: require('./referendum_detail.html'),
+    controller: ReferendumDetailController,
+    bindings: {
+      referendum: '='
+    }
   });
 
+
 function DetailPanelController () {
+}
+
+function OfficeDetailController () {
+}
+
+function ReferendumDetailController () {
 }
 
 
