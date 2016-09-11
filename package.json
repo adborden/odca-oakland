@@ -3,12 +3,13 @@
   "version": "0.0.0",
   "description": "Campaign finance data for Oakland",
   "scripts": {
-    "build": "npm run build-js && npm run build-thirdparty && npm run build-jekyll",
-    "build-js": "./_bin/build_js.sh",
-    "build-thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
-    "build-jekyll": "jekyll build",
+    "build": "npm-run-all \"build:js -- {1}\" build:thirdparty build:jekyll --",
+    "build:jekyll": "jekyll build",
+    "build:js": "./_bin/build_js.sh",
+    "build:thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
     "lint": "eslint \"src/**/*.js\"",
     "serve": "npm run build && jekyll serve",
+    "start": "npm run serve",
     "test": "npm run lint",
     "watch": "watch -d --wait 1 'npm run build-js' src & npm run serve"
   },
@@ -37,8 +38,10 @@
     "angular-route": "^1.5.8",
     "browserify-ngannotate": "^2.0.0",
     "eslint": "^3.4.0",
+    "exorcist": "^0.4.0",
     "lodash": "^4.15.0",
     "ng-annotate": "^1.2.1",
+    "npm-run-all": "^3.1.0",
     "stringify": "^5.1.0",
     "uglify-js": "^2.7.3",
     "watch": "^0.19.2"

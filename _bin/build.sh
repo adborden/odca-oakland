@@ -1,2 +1,2 @@
 #!/bin/bash
-exec npm run build
+exec npm run build -- --prod
