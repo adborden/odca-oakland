@@ -1,9 +1,9 @@
 'use strict';
 
 var angular = require('angular');
-angular.module('detail_panel', [])
-  .component('detailPanel', {
-    template: require('./detail_panel.html'),
+angular.module('ballot_item_detail', [])
+  .component('ballotItemDetail', {
+    template: require('./ballot_item_detail.html'),
     bindings: {
       detail: '='
     }
@@ -30,4 +30,4 @@ function ReferendumDetailController ($route, static_api) {
 }
 
 
-module.exports = 'detail_panel';
+module.exports = 'ballot_item_detail';
