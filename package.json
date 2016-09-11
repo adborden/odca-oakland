@@ -4,7 +4,7 @@
   "description": "Campaign finance data for Oakland",
   "scripts": {
     "build": "npm run build-js && npm run build-thirdparty && npm run build-jekyll",
-    "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify --debug -t [ stringify --extensions [ .html ] ] -t browserify-ngannotate $entrypoint | exorcist --base _site/assets/js _site/assets/js/${bundle_name}.bundle.js.map > _site/assets/js/${bundle_name}.bundle.js; uglifyjs --mangle --compress --prefix 3 --in-source-map _site/assets/js/${bundle_name}.bundle.js.map --source-map-url ${bundle_name}.bundle.min.js.map --source-map _site/assets/js/${bundle_name}.bundle.min.js.map -o _site/assets/js/${bundle_name}.bundle.min.js -- _site/assets/js/${bundle_name}.bundle.js; done",
+    "build-js": "./_bin/build_js.sh",
     "build-thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
     "build-jekyll": "jekyll build",
     "lint": "eslint \"src/**/*.js\"",
