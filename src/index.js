@@ -15,7 +15,7 @@ angular.module('odca', [
   require('./static'),
   require('./money'),
   require('./candidates'),
-  require('./detail_panel')
+  require('./ballot_item_detail')
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {

@@ -1,13 +1,12 @@
 'use strict';
 
-var angular = require('angular');
 var _ = require('lodash/core');
 var utils = require('../../utils');
 
 function LocalityController ($interpolate, $rootScope, $route, locality, ballot) {
   this.locality = locality;
   this.ballot = ballot;
-  this.ballot_item_detail = null;
+  this.ballot_item = {};
 
   var self = this;
   var offices = this.offices = [];
@@ -17,12 +16,12 @@ function LocalityController ($interpolate, $rootScope, $route, locality, ballot)
   ballot.$promise.then(function () {
     return findBallotItem($route.current.params);
   }).then(function (ballot_item) {
-    self.ballot_item_detail = currentDetailFactory(ballot_item);
+    self.ballot_item = ballot_item;
   });
 
   // Listen to route changes to update the ballot_item detail
   $rootScope.$on('$routeUpdate', function (event, next) {
-    self.ballot_item_detail = currentDetailFactory(findBallotItem(next.params));
+    self.ballot_item = findBallotItem(next.params);
   });
 
   // Sort ballot_items into offices/referendums
@@ -66,15 +65,6 @@ function LocalityController ($interpolate, $rootScope, $route, locality, ballot)
     return ballot.ballot_items.find(function (ballot_item) {
       return ballot_item.id === parseInt(ballot_item_id) && ballot_item.contest_type == contest_type;
     });
-  }
-
-  // Factory to create the detail model
-  function currentDetailFactory(ballot_item) {
-    ballot_item = ballot_item || {};
-    var heading = ballot_item.contest_type == 'Office' ? ballot_item.name :
-      $interpolate('Measure {{ number }}: {{ title }}', false, null, true)(ballot_item);
-
-    return angular.extend({heading: heading}, ballot_item);
   }
 }
 
