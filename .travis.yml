@@ -2,6 +2,11 @@ language: node_js
 node_js:
 - '4'
 
+before_install:
+  - rvm install 2.2
+  - rvm use 2.2
+  - gem install jekyll
+
 before_script:
   - npm run build
 
@@ -10,9 +15,7 @@ env:
   - secure: "OY6NhztsOalw7ai+CH7xN8bwPz9qACFS7PTr78ZmebnAamOyfzHvtafF9brih/pBONwUoPG2eib5ctp8TeKZ7Ye1HO6Bn9xEqzDwolTWRMSI3cgKSZEwgB3CMGXwjwnrUHdYEz+oNnGSMww48SIC45bdQsjLxyie6Q+2zahOuOBd5fo83OFIvsW9qRMB0SkVqdURsVQ0sYpjY7rqTVzJeS9ntxsPiml7moJT4yayT3vq5Vb7CELt8CulEjg+qA0zzmCkfelNOHvjs+QyOxpd/voLgXoL9hLSgtLhlZuHFhHO2yA1i/QX+xDdB+SlSYrLFDXQuxADpc8AivdZ5btc4ebzjKaKRCBkoy230rvQ45BMJOgi4KqVnjcXK/uK73G2kvNC6l5qQW0Er5c9W3TR+ZyNiWn90wuT7x+nkvUkskNsjwEdB/XomctkL+NtfEae84yF0CCKd1+A6kqnGH4mBF8wTM8EymgZQP9psFY+l0z/N8GzPRjyonJNWHqehWVDTqsLvwGrHdyygdKX/vLkkIQZir5NjbIA1R9vpV/48PlQb00gAClQqzbE4RWdSEgj2vLbNny8sTtQkdkohFv15fPLC78ggzYn9E4tGWJeuGqe8Eyh/KHuJKeSPzGfDssqW7ulntIzV/4DyNabQdcrumcrc6/QtJ7vl2+TSmmWxW8=" # GITHUB_TOKEN
 
 before_deploy:
-  - rvm install 2.2
   - rvm use 2.2
-  - gem install jekyll
 
 deploy:
   provider: script
