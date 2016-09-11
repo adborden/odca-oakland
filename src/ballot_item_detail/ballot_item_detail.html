@@ -1,5 +1,5 @@
-<h3>{{ $ctrl.detail.heading | default:'Oakland' }}</h3>
+<h3>{{ $ctrl.heading | default:'Oakland' }}</h3>
 <div class="divided-section">
-  <office-detail office="$ctrl.detail" ng-if="$ctrl.detail.contest_type === 'Office'"></office-detail>
-  <referendum-detail referendum="$ctrl.detail" ng-if="$ctrl.detail.contest_type === 'Referendum'"></referendum-detail>
+  <office-detail office="$ctrl.ballot_item" ng-if="$ctrl.ballot_item.contest_type === 'Office'"></office-detail>
+  <referendum-detail referendum="$ctrl.ballot_item" ng-if="$ctrl.ballot_item.contest_type === 'Referendum'"></referendum-detail>
 </div>
