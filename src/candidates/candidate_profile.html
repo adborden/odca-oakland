@@ -1,7 +1,7 @@
 <div class="panel panel-default entity">
   <div class="panel-body candidate">
     <div class="candidate__photo">
-      <img ng-src="{{ $ctrl.candidate.photo_url }}" alt="{{ $ctrl.candidate.name }}">
+      <img ng-src="{{ $ctrl.candidate | candidate_photo }}" alt="{{ $ctrl.candidate.name }}">
     </div>
     <div class="candidate__info">
       <div class="candidate__name"><a ng-href="{{ '/candidate/' + $ctrl.candidate.id | url }}">{{ $ctrl.candidate.name }}</a></div>

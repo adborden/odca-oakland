@@ -1,16 +1,15 @@
 'use strict';
 
 var angular = require('angular');
-angular.module('candidates', [])
+angular.module('candidates', [
+  require('./photo.filter')
+])
   .component('candidateProfile', {
     template: require('./candidate_profile.html'),
-    controller: CandidateController,
     bindings: {
       candidate: '='
     }
   });
 
-function CandidateController () {
-}
 
 module.exports = 'candidates';
