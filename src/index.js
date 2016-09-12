@@ -17,13 +17,16 @@ angular.module('odca', [
   require('./candidates'),
   require('./ballot_item_detail'),
   require('./candidate.page'),
-  require('./locality.page')
+  require('./locality.page'),
+  require('./home.page')
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(false).hashPrefix('!');
     $routeProvider
-      .when('/', require('./pages/home'))
+      .when('/', {
+        template: '<home-page></home-page>'
+      })
       .when('/candidate/:candidate_id', {
         template: '<candidate-page candidate="$resolve.candidate" opposing="$resolve.opposing" supporting="$resolve.supporting"></candidate-page>',
         resolve: {
