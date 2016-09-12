@@ -33,6 +33,10 @@ function ReferendumDetailController ($route, static_api) {
 function BallotItemDetailController ($scope) {
   var ctrl = this;
   $scope.$watch('$ctrl.ballot_item', function (ballot_item) {
+    if (!ballot_item) {
+      return;
+    }
+
     ctrl.heading = ballot_item.contest_type === 'Office' ?
       ballot_item.name :
       ballot_item.title;
