@@ -1,27 +1,27 @@
 <div class="row">
   <div class="col-xs-12">
-    <h2>{{ vm.locality.name }}</h2>
-    <span>Next election: {{ vm.ballot.date | date:'MMMM d, yyyy' }}</span>
+    <h2>{{ $ctrl.locality.name }}</h2>
+    <span>Next election: {{ $ctrl.ballot.date | date:'MMMM d, yyyy' }}</span>
   </div>
 </div>
 <div class="row">
   <div class="col-sm-8 col-sm-push-4">
-    <ballot-item-detail ballot-item="vm.ballot_item"></ballot-item-detail>
+    <ballot-item-detail ballot-item="$ctrl.ballot_item"></ballot-item-detail>
   </div>
   <div class="col-sm-4 col-sm-pull-8">
     <h3>Offices</h3>
     <div class="divided-section">
       <ul class="odca-list">
-        <li ng-repeat="office in vm.offices" class="odca-list-item">
-          <a ng-href="{{ '/locality/' + vm.locality.id  | url:{office_id: office.id} }}" class="odca-list-item__link"><div class="odca-list-item__content">{{ office.name }}</div><div class="odca-list-item__chevron"></div></a>
+        <li ng-repeat="office in $ctrl.offices" class="odca-list-item">
+          <a ng-href="{{ '/locality/' + $ctrl.locality.id  | url:{office_id: office.id} }}" class="odca-list-item__link"><div class="odca-list-item__content">{{ office.name }}</div><div class="odca-list-item__chevron"></div></a>
         </li>
       </ul>
     </div>
     <h3>Measures</h3>
     <div class="divided-section">
       <ul class="odca-list">
-        <li ng-repeat="referendum in vm.referendums" class="odca-list-item">
-          <a ng-href="{{ '/locality/' + vm.locality.id  | url:{referendum_id: referendum.id} }}" class="odca-list-item__link"><div class="odca-list-item__content"><span class="hidden-sm">Measure </span>{{ referendum.number }}<span class="visible-lg-inline"> {{ referendum.title }}</span></div><div class="odca-list-item__chevron"></div></a>
+        <li ng-repeat="referendum in $ctrl.referendums" class="odca-list-item">
+          <a ng-href="{{ '/locality/' + $ctrl.locality.id  | url:{referendum_id: referendum.id} }}" class="odca-list-item__link"><div class="odca-list-item__content"><span class="hidden-sm">Measure </span>{{ referendum.number }}<span class="visible-lg-inline"> {{ referendum.title }}</span></div><div class="odca-list-item__chevron"></div></a>
         </li>
       </ul>
     </div>

@@ -16,7 +16,8 @@ angular.module('odca', [
   require('./money'),
   require('./candidates'),
   require('./ballot_item_detail'),
-  require('./candidate.page')
+  require('./candidate.page'),
+  require('./locality.page')
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {
@@ -37,5 +38,16 @@ angular.module('odca', [
           }
         }
       })
-      .when('/locality/:locality_id', require('./pages/locality'));
+      .when('/locality/:locality_id', {
+        template: '<locality-page locality="$resolve.locality" ballot="$resolve.ballot"></locality-page>',
+        reloadOnSearch: false,
+        resolve: {
+          ballot: function ($route, static_api) {
+            return static_api.locality.current_ballot({locality_id: $route.current.params.locality_id});
+          },
+          locality: function ($route, static_api) {
+            return static_api.locality.get({locality_id: $route.current.params.locality_id});
+          }
+        }
+      });
   });
