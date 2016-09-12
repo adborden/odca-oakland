@@ -5,9 +5,9 @@
   <div class="divided-section">
     <dl>
       <dt>Total contributions</dt>
-      <dd>{{ $ctrl.supporting.total_contributions | default:0 | currency }}</dt>
+      <dd>{{ $ctrl.supporting.total_contributions | default:0 | dollar }}</dt>
       <dt>Total expenditures</dt>
-      <dd>{{ $ctrl.supporting.total_expenditures | default:0 | currency }}</dt>
+      <dd>{{ $ctrl.supporting.total_expenditures | default:0 | dollar }}</dt>
     </dl>
   </div>
 </div>
@@ -16,9 +16,9 @@
   <div class="divided-section">
     <dl>
       <dt>Total contributions</dt>
-      <dd>{{ $ctrl.opposing.total_contributions | default:0 | currency }}</dt>
+      <dd>{{ $ctrl.opposing.total_contributions | default:0 | dollar }}</dt>
       <dt>Total expenditures</dt>
-      <dd>{{ $ctrl.opposing.total_expenditures | default:0 | currency }}</dt>
+      <dd>{{ $ctrl.opposing.total_expenditures | default:0 | dollar }}</dt>
     </dl>
   </div>
 </div>
@@ -27,7 +27,7 @@
   <div class="divided-section">
     <dl>
       <dt ng-repeat-start="(label, amount) in $ctrl.supporting.contributions_by_type">{{ label }}</dt>
-      <dd ng-repeat-end>{{ amount | default:0 | currency }}</dt>
+      <dd ng-repeat-end>{{ amount | default:0 | dollar }}</dt>
     </dl>
   </div>
 </div>

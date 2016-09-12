@@ -2,7 +2,9 @@
 
 var angular = require('angular');
 
-angular.module('candidate.page', [])
+angular.module('candidate.page', [
+  require('../money')
+])
   .component('candidatePage', {
     template: require('./candidate.html'),
     bindings: {

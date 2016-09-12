@@ -1,7 +1,9 @@
 'use strict';
 
 var angular = require('angular');
-angular.module('ballot_item_detail', [])
+angular.module('ballot_item_detail', [
+  require('../money')
+])
   .component('ballotItemDetail', {
     template: require('./ballot_item_detail.html'),
     controller: BallotItemDetailController,
