@@ -10,6 +10,12 @@ angular.module('money', [])
       money: '='
     }
   })
+  .filter('dollar', function ($filter) {
+    // Shortcut for whole-dollar formatting
+    return function (money) {
+      return $filter('currency')(money, '$', 0);
+    };
+  })
   .directive('moneyBar', function () {
     return {
       template: require('./money_bar.html'),
@@ -58,7 +64,7 @@ function MoneyBarController ($filter) {
     if (format === 'percentage') {
       return $filter('number')(value / ctrl.max * 100, 0) + '%';
     } else if (format === 'money') {
-      return $filter('currency')(value, '$', 0);
+      return $filter('dollar')(value);
     } else {
       return '' + value;
     }

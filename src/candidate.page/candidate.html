@@ -1,0 +1,33 @@
+<h2>{{ $ctrl.candidate.name }}</h2>
+<div>{{ $ctrl.candidate.bio }}</div>
+<div>
+  <h3>Supporting</h3>
+  <div class="divided-section">
+    <dl>
+      <dt>Total contributions</dt>
+      <dd>{{ $ctrl.supporting.total_contributions | default:0 | dollar }}</dt>
+      <dt>Total expenditures</dt>
+      <dd>{{ $ctrl.supporting.total_expenditures | default:0 | dollar }}</dt>
+    </dl>
+  </div>
+</div>
+<div>
+  <h3>Opposing</h3>
+  <div class="divided-section">
+    <dl>
+      <dt>Total contributions</dt>
+      <dd>{{ $ctrl.opposing.total_contributions | default:0 | dollar }}</dt>
+      <dt>Total expenditures</dt>
+      <dd>{{ $ctrl.opposing.total_expenditures | default:0 | dollar }}</dt>
+    </dl>
+  </div>
+</div>
+<div>
+  <h3>Contributions by type</h3>
+  <div class="divided-section">
+    <dl>
+      <dt ng-repeat-start="(label, amount) in $ctrl.supporting.contributions_by_type">{{ label }}</dt>
+      <dd ng-repeat-end>{{ amount | default:0 | dollar }}</dt>
+    </dl>
+  </div>
+</div>

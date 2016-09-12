@@ -1,31 +1,40 @@
 'use strict';
 
+var angular = require('angular');
 var _ = require('lodash/core');
-var utils = require('../../utils');
+var utils = require('../utils');
 
-function LocalityController ($interpolate, $rootScope, $route, locality, ballot) {
-  this.locality = locality;
-  this.ballot = ballot;
-  this.ballot_item = {};
+angular.module('locality.page', [])
+  .component('localityPage', {
+    template: require('./locality.html'),
+    controller: LocalityController,
+    bindings: {
+      ballot: '=',
+      locality: '='
+    }
+  });
 
-  var self = this;
-  var offices = this.offices = [];
-  var referendums = this.referendums = [];
+function LocalityController ($interpolate, $rootScope, $route) {
+  var ctrl = this;
+  ctrl.ballot_item = {};
+
+  var offices = ctrl.offices = [];
+  var referendums = ctrl.referendums = [];
 
   // Find the current ballot_item, if any
-  ballot.$promise.then(function () {
+  ctrl.ballot.$promise.then(function () {
     return findBallotItem($route.current.params);
   }).then(function (ballot_item) {
-    self.ballot_item = ballot_item;
+    ctrl.ballot_item = ballot_item;
   });
 
   // Listen to route changes to update the ballot_item detail
   $rootScope.$on('$routeUpdate', function (event, next) {
-    self.ballot_item = findBallotItem(next.params);
+    ctrl.ballot_item = findBallotItem(next.params);
   });
 
   // Sort ballot_items into offices/referendums
-  ballot.$promise.then(function (ballot) {
+  ctrl.ballot.$promise.then(function (ballot) {
     return {
       offices: _(ballot.ballot_items)
         .filter(function (contest) {
@@ -62,26 +71,11 @@ function LocalityController ($interpolate, $rootScope, $route, locality, ballot)
       contest_type = 'Office';
     }
 
-    return ballot.ballot_items.find(function (ballot_item) {
+    return ctrl.ballot.ballot_items.find(function (ballot_item) {
       return ballot_item.id === parseInt(ballot_item_id) && ballot_item.contest_type == contest_type;
     });
   }
 }
 
-function ballot ($route, static_api) {
-  return static_api.locality.current_ballot({locality_id: $route.current.params.locality_id});
-}
 
-function locality ($route, static_api) {
-  return static_api.locality.get({locality_id: $route.current.params.locality_id});
-}
-
-module.exports = utils.route({
-  template: require('./locality.html'),
-  controller: LocalityController,
-  reloadOnSearch: false,
-  resolve: {
-    ballot: ballot,
-    locality: locality
-  }
-});
+module.exports = 'locality.page';
