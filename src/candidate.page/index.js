@@ -1,31 +1,16 @@
 'use strict';
 
-var utils = require('../../utils');
+var angular = require('angular');
 
-function CandidateController (candidate, supporting, opposing) {
-  this.candidate = candidate;
-  this.supporting = supporting;
-  this.opposing = opposing;
-}
+angular.module('candidate.page', [])
+  .component('candidatePage', {
+    template: require('./candidate.html'),
+    bindings: {
+      candidate: '=',
+      opposing: '=',
+      supporting: '='
+    }
+  });
 
-function candidate ($route, static_api) {
-  return static_api.candidate.get({candidate_id: $route.current.params.candidate_id});
-}
 
-function opposing ($route, static_api) {
-  return static_api.candidate.opposing({candidate_id: $route.current.params.candidate_id});
-}
-
-function supporting ($route, static_api) {
-  return static_api.candidate.supporting({candidate_id: $route.current.params.candidate_id});
-}
-
-module.exports = utils.route({
-  controller: CandidateController,
-  template: require('./candidate.html'),
-  resolve: {
-    candidate: candidate,
-    supporting: supporting,
-    opposing: opposing
-  }
-});
+module.exports = 'candidate.page';

@@ -31,8 +31,6 @@ function ReferendumDetailController ($route, static_api) {
 }
 
 function BallotItemDetailController ($scope) {
-  'ngInject';
-
   var ctrl = this;
   $scope.$watch('$ctrl.ballot_item', function (ballot_item) {
     ctrl.heading = ballot_item.contest_type === 'Office' ?

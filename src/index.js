@@ -15,13 +15,27 @@ angular.module('odca', [
   require('./static'),
   require('./money'),
   require('./candidates'),
-  require('./ballot_item_detail')
+  require('./ballot_item_detail'),
+  require('./candidate.page')
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {
     $locationProvider.html5Mode(false).hashPrefix('!');
     $routeProvider
       .when('/', require('./pages/home'))
-      .when('/candidate/:candidate_id', require('./pages/candidate'))
+      .when('/candidate/:candidate_id', {
+        template: '<candidate-page candidate="$resolve.candidate" opposing="$resolve.opposing" supporting="$resolve.supporting"></candidate-page>',
+        resolve: {
+          candidate: function ($route, static_api) {
+            return static_api.candidate.get({candidate_id: $route.current.params.candidate_id});
+          },
+          opposing: function ($route, static_api) {
+            return static_api.candidate.opposing({candidate_id: $route.current.params.candidate_id});
+          },
+          supporting: function ($route, static_api) {
+            return static_api.candidate.supporting({candidate_id: $route.current.params.candidate_id});
+          }
+        }
+      })
       .when('/locality/:locality_id', require('./pages/locality'));
   });
