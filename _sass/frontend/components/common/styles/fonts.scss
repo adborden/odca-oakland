@@ -80,3 +80,20 @@ $creteRound-regular: 400;
 .text-xlarge {
   font-size: 2.6rem;
 }
+
+.text-blue {
+  color: $brand-primary;
+}
+
+$i: 1;
+@each $grey in $color-greys {
+  .text-grey-#{$i} {
+    color: $grey;
+  }
+
+  $i: $i + 1;
+}
+
+.text-serif {
+  @include creteRound-font-family;
+}
