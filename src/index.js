@@ -18,7 +18,9 @@ angular.module('odca', [
   require('./ballot_item_detail'),
   require('./candidate.page'),
   require('./locality.page'),
-  require('./home.page')
+  require('./home.page'),
+  require('./referendum'),
+  require('./committee')
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {
@@ -50,6 +52,19 @@ angular.module('odca', [
           },
           locality: function ($route, static_api) {
             return static_api.locality.get({locality_id: $route.current.params.locality_id});
+          }
+        }
+      })
+      .when('/referendum/:referendum_id/:support_oppose', {
+        template: '<referendum-money referendum="$resolve.referendum" money="$resolve.money"></referendum-money>',
+        resolve: {
+          referendum: function ($route, static_api) {
+            return static_api.referendum.get({referendum_id: $route.current.params.referendum_id});
+          },
+          money: function ($route, static_api) {
+            return $route.current.params.support_oppose === 'supporting' ?
+              static_api.referendum.supporting({referendum_id: $route.current.params.referendum_id}) :
+              static_api.referendum.opposing({referendum_id: $route.current.params.referendum_id});
           }
         }
       });

@@ -97,3 +97,7 @@ $i: 1;
 .text-serif {
   @include creteRound-font-family;
 }
+
+.text-nowrap {
+  white-space: nowrap;
+}

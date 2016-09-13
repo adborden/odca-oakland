@@ -136,3 +136,15 @@ money-bar {
     line-height: 2;
   }
 }
+
+.see-more {
+  @include clearfix();
+  color: $core-grey-4;
+  margin: 1rem 0;
+  text-align: right;
+
+  .see-more__chevron {
+    @extend .glyphicon;
+    @extend .glyphicon-chevron-right;
+  }
+}
