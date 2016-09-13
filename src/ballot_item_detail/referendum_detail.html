@@ -10,9 +10,21 @@
   <div class="section">
     <h3 class="section-header">Money supporting the measure <span class="section-header__subtext">{{ $ctrl.supporting.money_supporting | default:0 | dollar }}</span></h3>
     <money-by-region money="$ctrl.supporting.money_supporting_by_region" color="green"></money-by-region>
+    <div class="see-more" ng-if="!!$ctrl.supporting.supporting_organizations.length">
+      <a class="see-more__content" ng-href="{{ '/referendum/' + $ctrl.referendum.id + '/supporting' | url }}">{{ $ctrl.supporting.supporting_organizations.length }} supporting <span class="text-nowrap">committees<span class="see-more__chevron"></span></span></a>
+    </div>
+    <div class="see-more" ng-if="!$ctrl.supporting.supporting_organizations.length">
+      No data on supporting committees
+    </div>
   </div>
   <div class="section">
     <h3 class="section-header">Money opposing the measure <span class="section-header__subtext">{{ $ctrl.opposing.money_opposing | default:0 | dollar }}</span></h3>
     <money-by-region money="$ctrl.opposing.money_opposing_by_region" color="red"></money-by-region>
+    <div class="see-more" ng-if="!!$ctrl.opposing.opposing_organizations.length">
+      <a class="see-more__content" ng-href="{{ '/referendum/' + $ctrl.referendum.id + '/opposing' | url }}">{{ $ctrl.opposing.opposing_organizations.length }} opposing <span class="text-no-break">committees<span class="see-more__chevron"></span></span></a>
+    </div>
+    <div class="see-more" ng-if="!$ctrl.opposing.opposing_organizations.length">
+      No data on opposing committees
+    </div>
   </div>
 </div>

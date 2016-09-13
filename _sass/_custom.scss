@@ -108,6 +108,12 @@ money-bar {
     height: 2rem;
     margin-right: 1rem;
     min-width: 5px;
+    transition: 1.5s cubic-bezier(0, 0, 0.05, 1) width;
+
+    // For animations
+    .is-off-screen & {
+      width: 5px !important;
+    }
   }
 
   .money-bar__measure--red {
@@ -134,5 +140,17 @@ money-bar {
     @extend .text-small;
     @extend .text-semibold;
     line-height: 2;
+  }
+}
+
+.see-more {
+  @include clearfix();
+  color: $core-grey-4;
+  margin: 1rem 0;
+  text-align: right;
+
+  .see-more__chevron {
+    @extend .glyphicon;
+    @extend .glyphicon-chevron-right;
   }
 }

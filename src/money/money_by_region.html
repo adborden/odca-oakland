@@ -1,4 +1,4 @@
-<div class="money-by-region">
+<div class="money-by-region is-off-screen" when-visible="$ctrl.onVisible">
   <div class="money-by-region__heading">Within Oakland</div>
   <money-bar value="{{ $ctrl.money.within_oakland }}" format="percentage" color="{{ $ctrl.color }}" max="{{ $ctrl.total }}"></money-bar>
   <div class="money-by-region__heading">Within California</div>

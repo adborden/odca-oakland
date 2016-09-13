@@ -26,10 +26,23 @@ angular.module('ballot_item_detail', [
   });
 
 
-function ReferendumDetailController ($route, static_api) {
-  var referendum_id = $route.current.params.referendum_id;
-  this.supporting = static_api.referendum.supporting({referendum_id: referendum_id});
-  this.opposing = static_api.referendum.opposing({referendum_id: referendum_id});
+function ReferendumDetailController ($scope, static_api) {
+  var ctrl = this;
+
+  $scope.$watch('$ctrl.referendum', function (referendum) {
+    if (!referendum || !referendum.id) {
+      return;
+    }
+
+    // Update supporting/opposing after the promise resolves to avoid updating
+    // the view with an empty object
+    static_api.referendum.supporting({referendum_id: referendum.id}).$promise.then(function (supporting) {
+      ctrl.supporting = supporting;
+    });
+    static_api.referendum.opposing({referendum_id: referendum.id}).$promise.then(function (opposing) {
+      ctrl.opposing = opposing;
+    });
+  });
 }
 
 function BallotItemDetailController ($scope) {
