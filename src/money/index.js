@@ -1,7 +1,11 @@
 'use strict';
 
 var angular = require('angular');
-angular.module('money', [])
+require('angular-scroll-animate');
+
+angular.module('money', [
+  'angular-scroll-animate'
+])
   .component('moneyByRegion', {
     template: require('./money_by_region.html'),
     controller: MoneyByRegionController,
@@ -16,7 +20,7 @@ angular.module('money', [])
       return $filter('currency')(money, '$', 0);
     };
   })
-  .directive('moneyBar', function () {
+  .directive('moneyBar', function ($timeout, $window) {
     return {
       template: require('./money_bar.html'),
       controller: MoneyBarController,
@@ -36,11 +40,26 @@ angular.module('money', [])
         updateMeasure(value);
       });
 
-      function updateMeasure (value) {
-        value = parseInt(value || 0);
+      var $$window = angular.element($window);
+      $$window.on('resize orientationchange', onResize);
+      scope.$on('$destroy', function () {
+        $$window.off('resize orientationchange', onResize);
+      });
 
-        var available_width  = 280;
-        angular.element(element).find('.money-bar__measure').width(Math.min(value / ctrl.max * available_width , available_width));
+      function onResize () {
+        updateMeasure(ctrl.value);
+      }
+
+      function updateMeasure (value) {
+        if (value === '') {
+          return;
+        }
+
+        value = parseInt(value) || 0;
+
+        var available_width  = angular.element(element).width() * 2 / 3;
+        var $measure = angular.element(element).find('.money-bar__measure');
+        $measure.width(Math.min(value / ctrl.max * available_width , available_width));
       }
     }
   });
@@ -73,7 +92,8 @@ function MoneyBarController ($filter) {
 
 function MoneyByRegionController ($scope) {
   var ctrl = this;
-  ctrl.total = 0;
+  ctrl.onVisible = onVisible;
+  ctrl.total = null;
 
   $scope.$watch('$ctrl.money', function (money) {
     if (!money) {
@@ -82,6 +102,10 @@ function MoneyByRegionController ($scope) {
 
     ctrl.total = money.within_oakland + money.within_california + money.out_of_state;
   });
+
+  function onVisible ($el) {
+    $el.removeClass('is-off-screen');
+  }
 }
 
 module.exports = 'money';

@@ -28,6 +28,7 @@
   "homepage": "https://github.com/adborden/odca-oakland#readme",
   "dependencies": {
     "angular": "^1.5.8",
+    "angular-scroll-animate": "^0.9.9",
     "bootstrap-sass": "^3.3.6",
     "browserify": "^13.0.1",
     "jquery": "^2.2.3",

@@ -108,6 +108,12 @@ money-bar {
     height: 2rem;
     margin-right: 1rem;
     min-width: 5px;
+    transition: 1.5s cubic-bezier(0, 0, 0.05, 1) width;
+
+    // For animations
+    .is-off-screen & {
+      width: 5px !important;
+    }
   }
 
   .money-bar__measure--red {
