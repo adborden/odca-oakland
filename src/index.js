@@ -67,5 +67,13 @@ angular.module('odca', [
               static_api.referendum.opposing({referendum_id: $route.current.params.referendum_id});
           }
         }
+      })
+      .when('/committee/:committee_id', {
+        template: '<committee-page committee="$resolve.committee"></committee-page>',
+        resolve: {
+          committee: function ($route, static_api) {
+            return static_api.committee.get({committee_id: $route.current.params.committee_id});
+          }
+        }
       });
   });

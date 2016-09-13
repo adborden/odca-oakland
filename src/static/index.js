@@ -14,6 +14,7 @@ angular.module('static_api', [
         supporting: {method: 'get', url: '/supporting'},
         opposing: {method: 'get', url: '/opposing'}
       }),
+      committee: api_group('/committee/:committee_id', {}),
       locality: api_group('/locality/:locality_id', {
         get: {method: 'get', transformResponse: arrayFirst}, // Workaround for backend returning an  array here
         current_ballot: {method: 'get', url: '/current_ballot'}
