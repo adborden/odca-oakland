@@ -3,14 +3,17 @@
   "version": "0.0.0",
   "description": "Campaign finance data for Oakland",
   "scripts": {
-    "build": "npm run build-js && npm run build-thirdparty && npm run build-jekyll",
-    "build-js": "mkdir -p _site/assets/js && for entrypoint in src/*.js; do bundle_name=$(basename $entrypoint .js); browserify -t [ stringify --extensions [ .html ] ] $entrypoint -o _site/assets/js/${bundle_name}.bundle.js; done",
-    "build-thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
-    "build-jekyll": "jekyll build",
+    "build": "npm-run-all \"build:js -- {1}\" build:thirdparty build:jekyll --",
+    "build:jekyll": "jekyll build",
+    "build:js": "./_bin/build_js.sh",
+    "build:thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
     "lint": "eslint \"src/**/*.js\"",
-    "serve": "npm run build && jekyll serve",
+    "serve": "npm-run-all serve:build serve:run",
+    "serve:build": "npm run build",
+    "serve:run": "jekyll serve",
+    "start": "npm run serve",
     "test": "npm run lint",
-    "watch": "watch -d --wait 1 'npm run build-js' src & npm run serve"
+    "watch": "watch -d --wait 1 'npm run build:js' src & npm run serve:run"
   },
   "repository": {
     "type": "git",
@@ -31,15 +34,19 @@
     "angular-scroll-animate": "^0.9.9",
     "bootstrap-sass": "^3.3.6",
     "browserify": "^13.0.1",
-    "jquery": "^2.2.3",
-    "lazy.js": "^0.4.2"
+    "jquery": "^2.2.3"
   },
   "devDependencies": {
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
+    "browserify-ngannotate": "^2.0.0",
     "eslint": "^3.4.0",
+    "exorcist": "^0.4.0",
     "lodash": "^4.15.0",
+    "ng-annotate": "^1.2.1",
+    "npm-run-all": "^3.1.0",
     "stringify": "^5.1.0",
+    "uglify-js": "^2.7.3",
     "watch": "^0.19.2"
   }
 }

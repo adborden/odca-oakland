@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="odca">
+<html ng-app="odca" ng-strict-di>
 
   {% include head.html %}
 
@@ -14,7 +14,7 @@
     <script src="{{ "/assets/javascripts/jquery.min.js" | prepend:site.baseurl }}"></script>
     <script src="{{ "/assets/javascripts/bootstrap.min.js" | prepend:site.baseurl }}"></script>
     {% if page.javascript %}
-    <script src="{{ page.javascript | append:".bundle.js" | prepend:"/assets/js/" | prepend:site.baseurl }}"></script>
+    <script src="{{ page.javascript | append:".bundle.min.js" | prepend:"/assets/js/" | prepend:site.baseurl }}"></script>
     {% endif %}
   </body>
 
