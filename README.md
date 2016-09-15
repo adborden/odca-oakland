@@ -26,6 +26,25 @@ For development, you can rebuild the project as your files change.
     $ npm run watch
 
 
+## ng-annotate
+
+The production build minifies the javascript with
+[uglify-js](https://www.npmjs.com/package/uglify-js). In order for angular's
+dependency injection to work properly, functions must be properly annotated. We
+use [ng-annotate](https://www.npmjs.com/package/ng-annotate) to do that. Most of
+the time, `ng-annotate` is smart enough to annotate without any hints, but
+occasionally gets this wrong. If your function is using dependency injection,
+it's best practice to annotate the function using the `'ngInject'` statement.
+
+```javascript
+function ($scope, service) {
+  'ngInject';
+  
+  // ...
+}
+```
+
+
 --
 _This prototype is based on
 [jekyll-prototype](https://github.com/adborden/jekyll-prototype)._
