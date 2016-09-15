@@ -22,7 +22,10 @@ for entrypoint in src/*.js; do
   bundle_min_map=${bundle_min}.map
 
   # Browserify with sourcemaps, then extract the sourcemaps to separate file
-  browserify --debug -t [ stringify --extensions [ .html ] ] -t browserify-ngannotate ${entrypoint} | \
+  browserify --debug \
+    --external ${js_asset_dir}/vendor.bundle.min.js \
+    -t [ stringify --extensions [ .html ] ] \
+    -t browserify-ngannotate ${entrypoint} | \
     exorcist --base ${js_asset_dir} ${js_asset_dir}/${bundle_js_map} > \
     ${js_asset_dir}/${bundle_js}
 
