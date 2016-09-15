@@ -4,7 +4,7 @@
     <span>Next election: {{ $ctrl.ballot.date | date:'MMMM d, yyyy' }}</span>
   </div>
 </div>
-<div class="row">
+<div id="ballot-content" class="row">
   <div class="col-sm-8 col-sm-push-4">
     <ballot-item-detail ballot-item="$ctrl.ballot_item"></ballot-item-detail>
   </div>

@@ -14,7 +14,7 @@ angular.module('locality.page', [])
     }
   });
 
-function LocalityController ($interpolate, $rootScope, $route) {
+function LocalityController ($anchorScroll, $interpolate, $rootScope, $route) {
   var ctrl = this;
   ctrl.ballot_item = {};
 
@@ -31,6 +31,7 @@ function LocalityController ($interpolate, $rootScope, $route) {
   // Listen to route changes to update the ballot_item detail
   $rootScope.$on('$routeUpdate', function (event, next) {
     ctrl.ballot_item = findBallotItem(next.params);
+    $anchorScroll('ballot-content');
   });
 
   // Sort ballot_items into offices/referendums
