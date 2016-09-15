@@ -23,7 +23,6 @@ for entrypoint in src/*.js; do
 
   # Browserify with sourcemaps, then extract the sourcemaps to separate file
   browserify --debug \
-    --external ./src/vendor/index.js \
     -t [ stringify --extensions [ .html ] ] \
     -t browserify-ngannotate ${entrypoint} | \
     exorcist --base ${js_asset_dir} ${js_asset_dir}/${bundle_js_map} > \
