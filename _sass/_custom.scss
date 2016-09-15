@@ -154,3 +154,18 @@ money-bar {
     @extend .glyphicon-chevron-right;
   }
 }
+
+.hero {
+  @extend .jumbotron;
+}
+
+.hero--sacremento {
+  background-image: url("../img/sacremento-capital-splash.png");
+  background-position: center;
+  background-size: cover;
+  color: $white;
+
+  & .panel {
+    color: initial;
+  }
+}
