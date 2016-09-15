@@ -10,13 +10,14 @@
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand appMainNav-navbar-brand" href="{{ site.baseurl }}/#!/"><span class="appMainNav-navbar-brand--span">OD</span>Ca</a>
+        <a class="navbar-brand appMainNav-navbar-brand visible-xs-inline" href="{{ site.baseurl }}/#!/"><span class="appMainNav-navbar-brand--span">OD</span>Ca</a>
+        <a class="navbar-brand appMainNav-navbar-brand hidden-xs" href="{{ site.baseurl }}/#!/"><span class="appMainNav-navbar-brand--span">Open Disclosure</span> California</a>
       </div>
 
       <div id="navbar-collapse" class="navbar-collapse collapse">
         <ul class="nav navbar-nav">
         {% for my_page in site.pages %}
-          {% if my_page.title %}
+          {% if my_page.title and my_page.hidden != true %}
           <li><a href="{{ my_page.url | prepend: site.baseurl }}">{{ my_page.title }}</a></li>
           {% endif %}
         {% endfor %}
