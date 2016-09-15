@@ -3,10 +3,11 @@
   "version": "0.0.0",
   "description": "Campaign finance data for Oakland",
   "scripts": {
-    "build": "npm-run-all \"build:js -- {1}\" build:thirdparty build:jekyll --",
+    "build": "npm-run-all build:thirdparty build:vendor \"build:js -- {1}\" build:jekyll --",
     "build:jekyll": "jekyll build",
     "build:js": "./_bin/build_js.sh",
     "build:thirdparty": "mkdir -p _site/assets && for dir in fonts images javascripts; do cp -R node_modules/bootstrap-sass/assets/${dir} _site/assets/; done && cp -R node_modules/jquery/dist/jquery.min.js _site/assets/javascripts/",
+    "build:vendor": "mkdir -p _site/assets/js && browserify --require ./src/vendor/index.js | uglifyjs --mangle --compress > _site/assets/js/vendor.bundle.min.js",
     "lint": "eslint \"src/**/*.js\"",
     "serve": "npm-run-all serve:build serve:run",
     "serve:build": "npm run build",
@@ -31,19 +32,20 @@
   "homepage": "https://github.com/adborden/odca-oakland#readme",
   "dependencies": {
     "angular": "^1.5.8",
-    "angular-scroll-animate": "^0.9.9",
-    "bootstrap-sass": "^3.3.6",
-    "browserify": "^13.0.1",
-    "jquery": "^2.2.3"
-  },
-  "devDependencies": {
     "angular-resource": "^1.5.8",
     "angular-route": "^1.5.8",
+    "angular-scroll-animate": "^0.9.9",
+    "bootstrap-sass": "^3.3.6",
+    "es5-shim": "^4.5.9",
+    "es6-shim": "^0.35.1",
+    "jquery": "^2.2.3",
+    "lodash": "^4.15.0"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.1",
     "browserify-ngannotate": "^2.0.0",
     "eslint": "^3.4.0",
     "exorcist": "^0.4.0",
-    "lodash": "^4.15.0",
-    "ng-annotate": "^1.2.1",
     "npm-run-all": "^3.1.0",
     "stringify": "^5.1.0",
     "uglify-js": "^2.7.3",
