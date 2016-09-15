@@ -6,6 +6,10 @@
 
 'use strict';
 
+//TODO https://github.com/adborden/odca-oakland/issues/6
+require('es5-shim');
+require('es6-shim');
+
 var angular = require('angular');
 
 angular.module('odca', [
