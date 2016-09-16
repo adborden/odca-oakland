@@ -33,7 +33,7 @@ For development, you can rebuild the project as your files change.
 ## ng-annotate
 
 The production build minifies the javascript with
-[uglify-js](https://www.npmjs.com/package/uglify-js). In order for angular's
+[uglify-js](https://www.npmjs.com/package/uglify-js). In order for Angular's
 dependency injection to work properly, functions must be properly annotated. We
 use [ng-annotate](https://www.npmjs.com/package/ng-annotate) to do that. Most of
 the time, `ng-annotate` is smart enough to annotate without any hints, but
@@ -47,6 +47,68 @@ function ($scope, service) {
   // ...
 }
 ```
+
+
+## Angular vs Jekyll
+
+You don't need to know much Jekyll for this project. All of the javascript and
+Angular code lives under `/src`. The HTML pages at the root level of the project
+are handled by Jekyll, but do very little besides bootstrapping the app.
+
+Jekyll handles:
+- scss compilation
+- conversion of markdown pages
+
+npm handles:
+- copying third-party assets like bootstrap and jquery
+- building javascript entrypoints
+
+
+### Adding an entrypoint
+
+Think of your entrypoint as your app bundle. By having multiple entrypoints, you
+could load a different app bundle per page. Any `.js` file directly under `/src`
+is considered to be an entrypoint and will be processed by the npm build
+pipeline.
+
+
+### Adding a new Jekyll page
+
+It's unlikely you'll need to do this because all of the app routes are handled
+by Angular. If there is a content heavy page, it could be created in markdown
+and processed by Jekyll. This might make sense for things like the about page or
+the FAQ.
+
+The frontmatter controls how the page is processed. In particular, there are
+three properties you'll care most about: `layout`, `title`, `javascript`.
+
+`layout` specifies which layout to use from `/_layouts`. `title` specifies the
+title of the page. `javascript` tells Jekyll to add a script tag for the
+specified entrypoint's app bundle. For example, here's the 404 page:
+
+
+```
+---
+layout: default
+title: Not Found
+javascript: 404
+---
+```
+
+Jekyll uses the `default.html` to render the page, with the title "Not Found",
+and includes a script tag to the app bundle built from `/src/404.js`.
+
+Easy, right?
+
+
+### Caveats
+
+Both Jekyll and Angular use `{{ }}` for template expressions. If the template is
+under `/src`, no problem, you're in javascript/Angular land so Angular will
+evaluate the expression. If you're elsewhere in the project, it's probably
+Jekyll rendering your template. In that case, you might want to escape a block
+of text using Jekyll's `{% raw %}{% endraw %}` tags. It won't touch any `{{ }}`
+inside the `raw` tag, so you can write Angular expressions that way.
 
 
 ## License
