@@ -24,7 +24,8 @@ angular.module('odca', [
   require('./locality.page'),
   require('./home.page'),
   require('./referendum'),
-  require('./committee')
+  require('./committee'),
+  require('./four04')
 ])
   .constant('base_url', '/odca-oakland')
   .config(function ($locationProvider, $routeProvider) {
@@ -81,5 +82,6 @@ angular.module('odca', [
             return static_api.committee.get({committee_id: $route.current.params.committee_id});
           }
         }
-      });
+      })
+      .otherwise({template: '<not-found></not-found>'});
   });
