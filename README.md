@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/adborden/odca-oakland.svg?branch=master)](https://travis-ci.org/adborden/odca-oakland)
+[![Dependency Status](https://gemnasium.com/badges/github.com/adborden/odca-oakland.svg)](https://gemnasium.com/github.com/adborden/odca-oakland)
+[![Code Climate](https://codeclimate.com/github/adborden/odca-oakland/badges/gpa.svg)](https://codeclimate.com/github/adborden/odca-oakland)
+
 # Open Disclosure Oakland
 
 Campaign finance data for Oakland.
