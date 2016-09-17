@@ -20,7 +20,7 @@ angular.module('odca', [
   require('./money'),
   require('./candidates'),
   require('./ballot_item_detail'),
-  require('./candidate.page'),
+  require('./candidate'),
   require('./locality.page'),
   require('./home.page'),
   require('./referendum'),

@@ -13,6 +13,11 @@ $core-grey-5: #f0f0f0;
 
 $color-greys: ($core-grey-1 $core-grey-2 $core-grey-3 $core-grey-4 $core-grey-5);
 
+$color-blue: #006ea3;
+$color-gold: #ffdd1f;
+$color-green: #0fc48b;
+$color-red: #e95300;
+
 $bodyTextColor: $core-grey-1;
-$linkTextColor: #006EA3;
+$linkTextColor: $color-blue;
 $titleTextColor: $core-grey-2; //same as headings color...
