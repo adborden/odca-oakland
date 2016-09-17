@@ -181,3 +181,9 @@ money-bar {
     padding: 0.5rem 0;
   }
 }
+
+.odca-footer {
+  @include odca-border();
+  background-color: $core-grey-5;
+  padding: 2rem 0;
+}

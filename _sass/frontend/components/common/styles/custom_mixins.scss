@@ -2,8 +2,21 @@
   Custom Mixins
 ======================================================================= */
 @mixin divided-section {
+  @include odca-border();
   background-color: white;
-  border-top: 2px solid #ffdd1f;
   margin-bottom: 2rem;
   padding: 1rem;
+}
+
+
+// Set the ODCA border on the element
+// $order: one of primary, secondary
+// $position: top or bottom
+@mixin odca-border($order: primary, $position: top) {
+  $border-size: 2px;
+  @if $order != primary {
+    $border-size: 1px;
+  }
+
+  border-#{$position}: $border-size solid #ffdd1f;
 }
