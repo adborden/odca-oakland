@@ -1,11 +1,16 @@
-<div class="panel panel-default entity">
-  <div class="panel-body candidate">
-    <div class="candidate__photo">
-      <img ng-src="{{ $ctrl.candidate | candidate_photo }}" alt="{{ $ctrl.candidate.name }}">
+<div class="candidate-list-item">
+  <a ng-href="{{ '/candidate/' + $ctrl.candidate.id | url }}" class="odca-list-item__link">
+    <div class="odca-list-item__content">
+      <div class="candidate__photo">
+        <img ng-src="{{ $ctrl.candidate | candidate_photo }}" alt="{{ $ctrl.candidate.name }}">
+      </div>
+      <div class="candidate__info">
+        <div class="candidate__name">{{ $ctrl.candidate.name }}</div>
+        <div ng-if="$ctrl.candidate.total_contributions" class="candidate__contributions">
+          <span class="hidden-xs">amount collected </span><span class="money text-grey-1">{{ $ctrl.candidate.total_contributions | dollar }}</span>
+        </div>
+      </div>
     </div>
-    <div class="candidate__info">
-      <div class="candidate__name"><a ng-href="{{ '/candidate/' + $ctrl.candidate.id | url }}">{{ $ctrl.candidate.name }}</a></div>
-      <div class="candidate__committee"><span class="glyphicon glyphicon-bullhorn"></span> <a ng-href="https://twitter.com/{{ $ctrl.candidate.twitter_url }}">{{ $ctrl.candidate.twitter_url }}</a></span></div>
-      <div class="candidate__website"><span class="glyphicon glyphicon-globe"></span> <a ng-href="{{ $ctrl.candidate.website_url }}">{{ $ctrl.candidate.website_url }}</a></div>
-  </div>
+      <div class="odca-list-item__chevron"></div>
+  </a>
 </div>

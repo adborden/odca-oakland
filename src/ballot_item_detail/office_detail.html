@@ -1,3 +1,5 @@
-<div ng-repeat="candidate in $ctrl.office.candidates">
-  <candidate-profile candidate="candidate"></candidate-profile>
-</div>
+<ul class="odca-list">
+  <li ng-repeat="candidate in $ctrl.office.candidates" class="odca-list-item">
+    <candidate-profile candidate="candidate"></candidate-profile>
+  </li>
+</ul>

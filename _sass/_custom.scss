@@ -4,36 +4,38 @@
  * `assets/css/custom.css` instead.
  **/
 
-.candidate {
+.candidate-list-item {
+  $photo-height: 8rem;
+  min-height: $photo-height;
+
   .candidate__photo {
     display: inline-block;
     margin-right: 1rem;
+    width: $photo-height; // photo is square-ish
 
     img {
-      object-fit: cover;
-      height: 160px;
-      width: 160px;
+      width: 100%;
     }
   }
 
   .candidate__info {
+    $calc-offset: $photo-height + 2;
     display: inline-block;
-    max-width: calc(100% - 160px);
-    min-width: 20rem;
-    overflow-x: hidden;
+    height: 100%;
+    max-width: calc(100% - #{$calc-offset});
+    min-width: 10rem;
     vertical-align: top;
   }
 
-  .candidate__name {
-    font-weight: bold;
-  }
+  .candidate__contributions {
+    @extend .text-serif;
+    @extend .text-small;
+    color: $core-grey-4;
 
-  .candidate__website {
-    word-wrap: break-word;
-  }
-
-  .glyphicon {
-    color: rgba(0, 0, 0, 0.2);
+    .money {
+      @extend .text-medium;
+      color: $core-grey-3;
+    }
   }
 }
 
@@ -71,13 +73,14 @@
     color: $core-grey-2;
     float: left;
     line-height: 2.4rem;
-    width: calc(100% - 3rem);
+    width: calc(100% - 2rem);
   }
 
   .odca-list-item__chevron {
     @extend .glyphicon;
     @extend .glyphicon-chevron-right;
     float: right;
+    width: 2rem;
   }
 }
 
