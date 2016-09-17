@@ -120,11 +120,11 @@ money-bar {
   }
 
   .money-bar__measure--red {
-    background-color: #e95300;
+    background-color: $color-red;
   }
 
   .money-bar__measure--green {
-    background-color: #0fc48b;
+    background-color: $color-green;
   }
 
   .money-bar__value {
@@ -140,10 +140,14 @@ money-bar {
   color: $core-grey-3;
 
   .money-by-region__heading {
-    @extend .text-small;
-    @extend .text-semibold;
-    line-height: 2;
+    @extend .component__heading;
   }
+}
+
+.component__heading {
+  @extend .text-small;
+  @extend .text-semibold;
+  line-height: 2;
 }
 
 .see-more {

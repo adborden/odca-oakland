@@ -18,5 +18,5 @@
     $border-size: 1px;
   }
 
-  border-#{$position}: $border-size solid #ffdd1f;
+  border-#{$position}: $border-size solid $color-gold;
 }
