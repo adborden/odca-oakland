@@ -2,11 +2,11 @@
 
 var angular = require('angular');
 
-angular.module('candidate.page', [
+angular.module('candidate', [
   require('../money')
 ])
   .component('candidatePage', {
-    template: require('./candidate.html'),
+    template: require('./candidate_page.html'),
     bindings: {
       candidate: '=',
       opposing: '=',
@@ -15,4 +15,4 @@ angular.module('candidate.page', [
   });
 
 
-module.exports = 'candidate.page';
+module.exports = 'candidate';
