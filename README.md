@@ -29,6 +29,23 @@ For development, you can rebuild the project as your files change.
 
     $ npm run watch
 
+## Filenames
+
+I'm open to suggestions, but wanted to decode what the extensions mean within
+the angular code. This was borrowed from some "best angular practices" guide.
+One thing I like about it is that the module dependencies become really clear.
+The thing I don't like is that you often have a few lines within a single file and
+many files.
+
+| Extension | Description |
+| --------- | ----------- |
+| `comp`    | Component   |
+| `ctrl`    | Controller  |
+| `directive` | Directive |
+| `factory` | factory     |
+| `html`    | HTML template |
+| `service` | Service     |
+
 
 ## ng-annotate
 
