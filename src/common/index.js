@@ -6,6 +6,7 @@ angular.module('common', [
   require('./assets.service'),
   require('./default.filter'),
   require('./page_title.service'),
+  require('./scroll_top'),
   require('./url.filter')
 ]);
 
