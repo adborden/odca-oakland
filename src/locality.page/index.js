@@ -4,7 +4,9 @@ var angular = require('angular');
 var _ = require('lodash/core');
 var utils = require('../utils');
 
-angular.module('locality.page', [])
+angular.module('locality.page', [
+  require('../common')
+])
   .component('localityPage', {
     template: require('./locality.html'),
     controller: LocalityController,
@@ -14,7 +16,7 @@ angular.module('locality.page', [])
     }
   });
 
-function LocalityController ($anchorScroll, $interpolate, $rootScope, $route) {
+function LocalityController ($anchorScroll, $interpolate, $rootScope, $route, $scope, pageTitle) {
   var ctrl = this;
   ctrl.ballot_item = {};
 
@@ -26,6 +28,21 @@ function LocalityController ($anchorScroll, $interpolate, $rootScope, $route) {
     return findBallotItem($route.current.params);
   }).then(function (ballot_item) {
     ctrl.ballot_item = ballot_item;
+  });
+
+  // Update page title based on locality
+  if (!$route.current.params.office_id && !$route.current.params.referendum_id) {
+    ctrl.locality.$promise.then(function (locality) {
+      pageTitle(locality.name);
+    });
+  }
+
+  $scope.$watch('$ctrl.ballot_item', function (ballot_item) {
+    if (!ballot_item) {
+      return;
+    }
+
+    pageTitle(ballot_item.name);
   });
 
   // Listen to route changes to update the ballot_item detail
