@@ -9,6 +9,7 @@
 //TODO https://github.com/adborden/odca-oakland/issues/6
 require('es5-shim');
 require('es6-shim');
+require('ng-table');
 
 var angular = require('angular');
 

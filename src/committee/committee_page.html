@@ -4,9 +4,12 @@
   <div class="divided-section">
     <h2>2016</h2>
     <div>Total money spent to date <span class="money">{{ $ctrl.committee.total_expenditures }}</span></div>
-  </div>
-  <div class="divided-section">
-    <h2>2015</h2>
-    <p>No data for this year.</p>
+    <table ng-table="$ctrl.datatable" class="table table-condensed table-bordered table-striped">
+      <tr ng-repeat="row in $data">
+        <td data-title="'Number'" sortable="'number'">{{row.number}}</td>
+        <td data-title="'Title'" sortable="'title'">{{row.title}}</td>
+        <td data-title="'Money'">{{ row.total_contributions }}</td>
+      </tr>
+    </table>
   </div>
 </div>

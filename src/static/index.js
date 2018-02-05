@@ -4,6 +4,7 @@
 var angular = require('angular');
 
 var static_backend_url = 'https://disclosure-backend-static.tdooner.com';
+static_backend_url = 'http://localhost:4567';
 
 angular.module('static_api', [
   require('angular-resource')

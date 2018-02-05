@@ -38,7 +38,8 @@
     "es5-shim": "^4.5.9",
     "es6-shim": "^0.35.1",
     "jquery": "^2.2.3",
-    "lodash": "^4.15.0"
+    "lodash": "^4.15.0",
+    "ng-table": "^1.0.0"
   },
   "devDependencies": {
     "browserify": "^13.0.1",
