@@ -1,3 +1,7 @@
+**This repo is no longer maintained. If you’re interested in making campaign finance more accessible for Californians, join us at [CA Civic Lab](https://github.com/caciviclab/odca-jekyll).**
+
+---
+
 [![Build Status](https://travis-ci.org/adborden/odca-oakland.svg?branch=master)](https://travis-ci.org/adborden/odca-oakland)
 [![Dependency Status](https://gemnasium.com/badges/github.com/adborden/odca-oakland.svg)](https://gemnasium.com/github.com/adborden/odca-oakland)
 [![Code Climate](https://codeclimate.com/github/adborden/odca-oakland/badges/gpa.svg)](https://codeclimate.com/github/adborden/odca-oakland)
